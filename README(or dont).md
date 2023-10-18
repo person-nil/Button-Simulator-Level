@@ -1,4 +1,4 @@
-~Button Simulator Level~
+**Button Simulator Level**
 
 A Basic Incremental
 
