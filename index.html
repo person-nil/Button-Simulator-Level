@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
+
+  <style>
+    body {
+      background-color: gray;
+    }
+
+    .text {
+      font-family: Fredoka One;
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .stat {
+      width: max-content;
+      height: 38px;
+      border-radius: 10px;
+      outline: 5px solid white;
+      text-align: center;
+    }
+
+    .button {
+      font-family: Fredoka One;
+      font-size: 2.5em;
+      border-width: 0px;
+      background-color: white;
+      margin: auto;
+      width: 350px;
+      height: 150px;
+      display: block;
+      border-radius: 15px;
+      outline: 5px solid white;
+    }
+
+    .button:hover {
+      position: relative;
+      transform: scale(1.05);
+      transition: 0.25s;
+    }
+
+    .button:active {
+      transform: scale(1.1);
+      transition: 0.25s;
+    }
+
+    .rune {
+      font-family: Fredoka One;
+      font-size: 1.3em;
+      border-width: 0px;
+      background-color: red;
+      margin: auto;
+      width: 250px;
+      height: 100px;
+      border-radius: 15px;
+      outline: 5px solid darkred;
+    }
+
+    .rune:hover {
+      transform: scale(1.05);
+      transition: 0.25s;
+    }
+
+    .rune:active {
+      transform: scale(1.1);
+      transition: 0.25s;
+    }
+
+    .tabs {
+      font-family: Fredoka One;
+      font-size: 2em;
+      border-width: 0px;
+      background-color: white;
+      margin: auto;
+      width: 150px;
+      height: 50px;
+      border-radius: 15px;
+      outline: 5px solid white;
+    }
+
+    .tabs:hover {
+      transform: scale(1.05);
+      transition: 0.25s;
+    }
+
+    .tabs:active {
+      transform: scale(1.1);
+      transition: 0.25s;
+    }
+  </style>
+
+  <script>
+    if (JSON.parse(localStorage.getItem('cashS')) == null) {
+      // Variables
+      var mrune = 0
+      var mtoggle = false
+      var mcost = 100
+      var rrune = 0
+      var rtoggle = false
+      var rcost = 250
+      var prune = 0
+      var ptoggle = false
+      var pcost = 500
+      var arune = 0
+      var atoggle = false
+      var acost = 1000
+      var srune = 0
+      var stoggle = false
+      var scost = 2500
+      var sac = 0
+      var sacgive = 0
+      var saccost = 10000
+      var swait = false
+      var cash = 1
+      var cprice = 50
+      var mgive = 1
+      var multi = 1
+      var mprice = 1000
+      var rgive = 1
+      var reb = 1
+      var rprice = 1500
+      var pgive = 1
+      var pres = 1
+      var pprice = 2000
+      var agive = 1
+      var asc = 1
+      var aprice = 2500
+      var sgive = 1
+      var sup = 1
+    } else {
+      var mrune = JSON.parse(localStorage.getItem('mruneS'))
+      var mtoggle = JSON.parse(localStorage.getItem('mtoggleS'))
+      var mcost = JSON.parse(localStorage.getItem('mcostS'))
+      var rrune = JSON.parse(localStorage.getItem('rruneS'))
+      var rtoggle = JSON.parse(localStorage.getItem('rtoggleS'))
+      var rcost = JSON.parse(localStorage.getItem('rcostS'))
+      var prune = JSON.parse(localStorage.getItem('pruneS'))
+      var ptoggle = JSON.parse(localStorage.getItem('ptoggleS'))
+      var pcost = JSON.parse(localStorage.getItem('pcostS'))
+      var arune = JSON.parse(localStorage.getItem('aruneS'))
+      var atoggle = JSON.parse(localStorage.getItem('atoggleS'))
+      var acost = JSON.parse(localStorage.getItem('acostS'))
+      var srune = JSON.parse(localStorage.getItem('sruneS'))
+      var stoggle = JSON.parse(localStorage.getItem('stoggleS'))
+      var scost = JSON.parse(localStorage.getItem('scostS'))
+      var sac = JSON.parse(localStorage.getItem('sacS'))
+      var sacgive = JSON.parse(localStorage.getItem('sacgiveS'))
+      var saccost = JSON.parse(localStorage.getItem('saccostS'))
+      var swait = JSON.parse(localStorage.getItem('swaitS'))
+      var cash = JSON.parse(localStorage.getItem('cashS'))
+      var cprice = JSON.parse(localStorage.getItem('cpriceS'))
+      var mgive = JSON.parse(localStorage.getItem('mgiveS'))
+      var multi = JSON.parse(localStorage.getItem('multiS'))
+      var mprice = JSON.parse(localStorage.getItem('mpriceS'))
+      var rgive = JSON.parse(localStorage.getItem('rgiveS'))
+      var reb = JSON.parse(localStorage.getItem('rebS'))
+      var rprice = JSON.parse(localStorage.getItem('rpriceS'))
+      var pgive = JSON.parse(localStorage.getItem('pgiveS'))
+      var pres = JSON.parse(localStorage.getItem('presS'))
+      var pprice = JSON.parse(localStorage.getItem('ppriceS'))
+      var agive = JSON.parse(localStorage.getItem('agiveS'))
+      var asc = JSON.parse(localStorage.getItem('ascS'))
+      var aprice = JSON.parse(localStorage.getItem('apriceS'))
+      var sgive = JSON.parse(localStorage.getItem('sgiveS'))
+      var sup = JSON.parse(localStorage.getItem('supS'))
+    }
+  </script>
+
+<body>
+  <div style="display: flex; justify-content: space-around">
+    <button id="sacrifice" class="tabs" style="outline: 5px solid white; background: lightgray; color: white; background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);" onclick="sacrifice()">Sacrifice</button>
+  </div>
+  <br>
+  <br>
+  <div style="display: flex; justify-content: space-around;">
+    <div id="sacrificetab" class="stat" style="background-color: white; height: 0px; width: 0px; opacity: 0">
+      <h1 class="text" style="border-width: 0px; background-color: white; color: lightgray; display: block" id="sactag">You Need: 100K Ascension</h1>
+      <h1 class="text" style="border-width: 0px; background-color: white; color: lightgray; display: block" id="sactag2">+0 Sacrifice Point</h1>
+      <h1 class="text" style="border-width: 0px; background-color: white; color: lightgray; display: block; font-size: 1.5em;">1 Sacrifice Point = +1x Cash, +0.5x Multi, +0.2x Rebirth, +0.15x Prestige, +0.1x Ascension</h1>
+      <h1 class="text" style="border-width: 0px; background-color: white; color: lightgray; display: block">Are You Sure?</h1>
+      <br>
+      <br>
+      <button class="button" style="background-color: lightgray; color: white; display: block; outline: 5px solid darkgray;" onclick="yes()">Yes</button>
+      <br>
+      <br>
+      <br>
+      <button class="button" style="background-color: lightgray; color: white; display: block; outline: 5px solid darkgray;" onclick="no()">No</button>
+      <br>
+      <h1 class="text" style="border-width: 0px; background-color: white; color: lightgray; display: block" id="sacstat">You Have: 0 Sacrifice Points</h1>
+    </div>
+  </div>
+
+  <div id="main" style="display: flex; justify-content: space-around; opacity: 1">
+    <div>
+      <div class="stat" style="background: green; outline: 5px solid darkgreen">
+        <h1 id="cashstat" class="text" style="color: darkgreen">Cash: 0</h1>
+      </div>
+      <br>
+      <div class="stat" style="background: red; outline: 5px solid darkred">
+        <h1 id="multistat" class="text" style="color: darkred">Multi: 1</h1>
+      </div>
+      <br>
+      <div class="stat" style="background: blue; outline: 5px solid darkblue">
+        <h1 id="rebstat" class="text" style="color: darkblue">Rebirth: 0</h1>
+      </div>
+      <br>
+      <div class="stat" style="background: darkviolet; outline: 5px solid purple">
+        <h1 id="presstat" class="text" style="color: purple">Prestige: 0</h1>
+      </div>
+      <br>
+      <div class="stat" style="background: yellow; outline: 5px solid #8B8000">
+        <h1 id="ascstat" class="text" style="color: #8B8000">Ascension: 0</h1>
+      </div>
+      <br>
+      <div class="stat" style="background: #0BDA51; outline: 5px solid #00A36C">
+        <h1 id="supstat" class="text" style="color: #00A36C">Supreme: 0</h1>
+      </div>
+    </div>
+
+    <div>
+      <br>
+      <br>
+      <button id="mrune" class="rune" onclick="rune(1)">~~Multi Amper~~<br>Cost: 100 Multi<br>Owned: 0<br>Boost: x1</button>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <button id="rrune" class="rune" style="background-color: blue; outline: 5px solid darkblue;" onclick="rune(2)">~~Rebirth Amper~~<br>Cost: Rebirth<br>Owned: 0<br>Boost: x1</button>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <button id="prune" class="rune" style="background-color: darkviolet; outline: 5px solid purple;" onclick="rune(3)">~~Prestige Amper~~<br>Cost: 100 Prestige<br>Owned: 0<br>Boost: x1</button>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <button id="arune" class="rune" style="background-color: yellow; outline: 5px solid #8B8000;" onclick="rune(4)">~~Ascension Amper~~<br>Cost: 100 Ascension<br>Owned: 0<br>Boost: x1</button>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <button id="srune" class="rune" style="background-color: #0BDA51; outline: 5px solid #00A36C;" onclick="rune(5)">~~Supreme Amper~~<br>Cost: 100 Supreme<br>Owned: 0<br>Boost: x1</button>
+    </div>
+
+    <div>
+      <br>
+      <button id="multi" class="button" style="background-color: red; outline: 5px solid darkred; color: darkred;" onclick="stat(1)">Multi<br>50 Cash<br>1 Multi</button>
+      <br>
+      <br>
+      <button id="reb" class="button" style="background-color: blue; outline: 5px solid darkblue; color: darkblue;" onclick="stat(2)">Rebirth<br>1k Multi<br>1 Rebirth</button>
+      <br>
+      <br>
+      <button id="pres" class="button" style="background-color: darkviolet; outline: 5px solid purple; color: purple;" onclick="stat(3)">Prestige<br>1.5k Rebirth<br>1 Prestige</button>
+      <br>
+      <br>
+      <button id="asc" class="button" style="background-color: yellow; outline: 5px solid #8B8000; color: #8B8000;" onclick="stat(4)">Ascension<br>2k Prestige<br>1 Ascension</button>
+      <br>
+      <br>
+      <button id="sup" class="button" style="background-color: #0BDA51; outline: 5px solid #00A36C; color: #00A36C;" onclick="stat(5)">Supreme<br>2.5k Ascension<br>1 Supreme</button>
+    </div>
+  </div>
+
+  <script>
+    function abbr(value) {
+      var newValue = value;
+      if (value < 10000000000000000000) {
+        if (value >= 1000) {
+          var suffixes = ["", "k", "m", "b","t","q","Q"];
+          var suffixNum = Math.floor( (""+value).length/3 );
+          var shortValue = '';
+          for (var precision = 2; precision >= 1; precision--) {
+            shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
+            var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
+            if (dotLessShortValue.length <= 2) { break; }
+          }
+          if (shortValue % 1 != 0)  shortValue = shortValue.toFixed(1);
+          newValue = shortValue+suffixes[suffixNum];
+        }
+        return newValue;
+      } else {
+        return value.toPrecision(2);
+      }
+    }
+
+
+    function stat(stat) {
+      if (stat == 1) {
+        if (cash >= cprice) {
+          cash = 10
+          cprice *= 1.3
+          multi += mgive * reb * (1 + mrune / 100) * (sac * 0.5 + 1)
+          mgive *= 1.225
+
+        }
+      }
+      if (stat == 2) {
+        if (multi >= mprice) {
+          multi = 1
+          cash = 1
+          cprice = 50
+          mgive = 1
+          multi = 1
+          reb += rgive * pres * (1 + rrune / 100) * (sac * 0.2 + 1)
+          mprice *= 1.45
+          rgive *= 1.35
+
+        }
+      }
+
+      if (stat == 3) {
+        if (reb >= rprice) {
+          cash = 1
+          cprice = 50
+          mgive = 1
+          multi = 1
+          mprice = 1000
+          rgive = 1
+          reb = 1
+          pres += pgive * asc * (1 + prune / 100) * (sac * 0.15 + 1)
+          rprice *= 1.45
+          pgive *= 1.35
+        }
+      }
+
+      if (stat == 4) {
+        if (pres >= pprice) {
+          cash = 1
+          cprice = 50
+          mgive = 1
+          multi = 1
+          mprice = 1000
+          rgive = 1
+          reb = 1
+          pgive = 1
+          rprice = 1500
+          pres = 1
+          asc += agive * sup * (1 + arune / 100) * (sac * 0.1 + 1)
+          pprice *= 1.60
+          agive *= 1.45
+        }
+      }
+
+    if (stat == 5) {
+        if (asc >= aprice) {
+          cash = 1
+          cprice = 50
+          mgive = 1
+          multi = 1
+          mprice = 1000
+          rgive = 1
+          reb = 1
+          pgive = 1
+          rprice = 1500
+          pres = 1
+          agive = 1
+          pprice = 2000
+          asc = 1
+          sup += sgive * (1 + srune / 100)
+          aprice *= 1.70
+          sgive *= 1.55
+        }
+      }
+    }
+
+    function rune(rune) {
+      if (rune == 1) {
+        if (mtoggle === true) {
+          mtoggle = false
+          document.getElementById("mrune").style.backgroundColor = "red"
+          document.getElementById("mrune").style.outline = "5px solid darkred"
+        } else {
+          stoggle = false
+          mtoggle = true
+          rtoggle = false
+          ptoggle = false
+          atoggle = false
+          document.getElementById("mrune").style.backgroundColor = "green"
+          document.getElementById("mrune").style.outline = "5px solid darkgreen"
+        }
+      }
+
+      if (rune == 2) {
+        if (rtoggle === true) {
+          rtoggle = false
+          document.getElementById("rrune").style.backgroundColor = "blue"
+          document.getElementById("rrune").style.outline = "5px solid darkblue"
+        } else {
+          stoggle = false
+          rtoggle = true
+          mtoggle = false
+          ptoggle = false
+          atoggle = false
+          document.getElementById("rrune").style.backgroundColor = "green"
+          document.getElementById("rrune").style.outline = "5px solid darkgreen"
+        }
+      }
+
+      if (rune == 3) {
+        if (ptoggle === true) {
+          ptoggle = false
+          document.getElementById("prune").style.backgroundColor = "darkviolet"
+          document.getElementById("prune").style.outline = "5px solid purple"
+        } else {
+          stoggle = false
+          ptoggle = true
+          mtoggle = false
+          rtoggle = false
+          atoggle = false
+          document.getElementById("prune").style.backgroundColor = "green"
+          document.getElementById("prune").style.outline = "5px solid darkgreen"
+        }
+      }
+
+      if (rune == 4) {
+        if (atoggle === true) {
+          atoggle = false
+          document.getElementById("arune").style.backgroundColor = "yellow"
+          document.getElementById("arune").style.outline = "5px solid #8B8000"
+        } else {
+          stoggle = false
+          atoggle = true
+          mtoggle = false
+          rtoggle = false
+          ptoggle = false
+          document.getElementById("arune").style.backgroundColor = "green"
+          document.getElementById("arune").style.outline = "5px solid darkgreen"
+        }
+      }
+
+      if (rune == 5) {
+        if (stoggle === true) {
+          stoggle = false
+          document.getElementById("srune").style.backgroundColor = "#0BDA51"
+          document.getElementById("srune").style.outline = "5px solid #00A36C"
+        } else {
+          stoggle = true
+          atoggle = false
+          mtoggle = false
+          rtoggle = false
+          ptoggle = false
+          document.getElementById("srune").style.backgroundColor = "green"
+          document.getElementById("srune").style.outline = "5px solid darkgreen"
+        }
+      }
+    }
+
+    function no() {
+      document.getElementById("sacrificetab").style.opacity = 0
+      document.getElementById("sacrificetab").style.width = "0px"
+      document.getElementById("sacrificetab").style.height = "0px"
+      document.getElementById("main").style.opacity = 1
+      swait = false
+    }
+
+    function yes() {
+      if (asc >= saccost) {
+        let sactext = "Are You Sure You Want To Sacrifice?\nSacrificing Will Reset All Stats!"
+        if (confirm(sactext) === true) {
+          sac += sacgive
+          saccost *= 100
+          cash = 1
+          cprice = 50
+          mgive = 1
+          multi = 1
+          mprice = 1000
+          rgive = 1
+          reb = 1
+          rprice = 1500
+          pgive = 1
+          pres = 1
+          pprice = 2000
+          agive = 1
+          asc = 1
+          aprice = 2500
+          sgive = 1
+          sup = 1
+          document.getElementById("sacrificetab").style.opacity = 0
+          document.getElementById("sacrificetab").style.width = "0px"
+          document.getElementById("sacrificetab").style.height = "0px"
+          document.getElementById("main").style.opacity = 1
+        }
+      } else {
+        document.getElementById("sactag").innerHTML = "You Don't Have Enough Ascension!"
+        swait = true
+      }
+    }
+
+    function sacrifice() {
+      document.getElementById("sacrificetab").style.opacity = 1
+      document.getElementById("sacrificetab").style.width = "500px"
+      document.getElementById("sacrificetab").style.height = "800px"
+      document.getElementById("main").style.opacity = 0
+      sacgive = Math.round(Math.log10(asc) * 2)
+      document.getElementById("sacstat").innerHTML = "You Have: " + abbr(sac) + " Sacrifice Points"
+      document.getElementById("sactag2").innerHTML = "+ " + abbr(sacgive) + " Sacrifice Points"
+    }
+
+    function gameLoop() {
+      if (cash >= cprice) {
+        document.getElementById("multi").style.backgroundColor = "#FF6666"
+      } else {
+        document.getElementById("multi").style.backgroundColor = "red"
+      }
+
+      if (multi >= mprice) {
+        document.getElementById("reb").style.backgroundColor = "#6666FF"
+      } else {
+        document.getElementById("reb").style.backgroundColor = "blue"
+      }
+
+      if (reb >= rprice) {
+        document.getElementById("pres").style.backgroundColor = "#BF40BF"
+      } else {
+        document.getElementById("pres").style.backgroundColor = "darkviolet"
+      }
+
+      if (pres >= pprice) {
+        document.getElementById("asc").style.backgroundColor = "#FFFF8F"
+      } else {
+        document.getElementById("asc").style.backgroundColor = "yellow"
+      }
+
+      if (asc >= aprice) {
+        document.getElementById("sup").style.backgroundColor = "#98FB98"
+      } else {
+        document.getElementById("sup").style.backgroundColor = "#0BDA51"
+      }
+
+      cash += multi * (sac + 1) * 10
+
+      document.getElementById("multi").innerHTML = "Multi<br>" + abbr(Math.round(cprice)) + " Cash<br>" + abbr(Math.round(mgive * reb * (1 + mrune / 100) * (sac * 0.5 + 1))) + " Multi"
+      document.getElementById("reb").innerHTML = "Rebirth<br>" + abbr(Math.round(mprice)) + " Multi<br>" + abbr(Math.round(rgive * pres * (1 + rrune / 100) * (sac * 0.2 + 1))) + " Rebirth"
+      document.getElementById("pres").innerHTML = "Prestige<br>" + abbr(Math.round(rprice)) + " Rebirth<br>" + abbr(Math.round(pgive * asc * (1 + prune / 100) * (sac * 0.15 + 1))) + " Prestige"
+      document.getElementById("asc").innerHTML = "Ascension<br>" + abbr(Math.round(pprice)) + " Prestige<br>" + abbr(Math.round(agive * sup * (1 + arune / 100) * (sac * 0.1 + 1))) + " Ascension"
+      document.getElementById("sup").innerHTML = "Supreme<br>" + abbr(Math.round(aprice)) + " Ascension<br>" + abbr(Math.round(sgive * (1 + srune / 100))) + " Supreme"
+
+      document.getElementById("cashstat").innerHTML = "Cash: " + abbr(Math.round(cash))
+      document.getElementById("multistat").innerHTML = "Multi: " + abbr(Math.round(multi))
+      document.getElementById("rebstat").innerHTML = "Rebirth: " + abbr(Math.round(reb - 1))
+      document.getElementById("presstat").innerHTML = "Prestige: " + abbr(Math.round(pres - 1))
+      document.getElementById("ascstat").innerHTML = "Ascension: " + abbr(Math.round(asc - 1))
+      document.getElementById("supstat").innerHTML = "Supreme: " + abbr(Math.round(sup - 1))
+
+      document.getElementById("mrune").innerHTML = "~~Multi Amper~~<br>Cost: " + abbr(Math.round(mcost)) + " Multi<br>Owned: " + abbr(Math.round(mrune)) + "<br>Boost: +x" + abbr(Math.round(mrune) / 100)
+      document.getElementById("rrune").innerHTML = "~~Rebirth Amper~~<br>Cost: " + abbr(Math.round(rcost)) + " Rebirth<br>Owned: " + abbr(Math.round(rrune)) + "<br>Boost: +x" + abbr(Math.round(rrune) / 100)
+      document.getElementById("prune").innerHTML = "~~Prestige Amper~~<br>Cost: " + abbr(Math.round(pcost)) + " Prestige<br>Owned: " + abbr(Math.round(prune)) + "<br>Boost: +x" + abbr(Math.round(prune) / 100)
+      document.getElementById("arune").innerHTML = "~~Ascension Amper~~<br>Cost: " + abbr(Math.round(acost)) + " Ascension<br>Owned: " + abbr(Math.round(arune)) + "<br>Boost: +x" + abbr(Math.round(arune) / 100)
+      document.getElementById("srune").innerHTML = "~~Supreme Amper~~<br>Cost: " + abbr(Math.round(scost)) + " Supreme<br>Owned: " + abbr(Math.round(srune)) + "<br>Boost: +x" + abbr(Math.round(srune) / 100)
+
+      if (mtoggle === true) {
+        if (multi >= mcost) {
+          mrune += 1
+          multi -= mcost
+          mcost *= 1.025
+        } else {
+          document.getElementById("mrune").style.backgroundColor = "red"
+          document.getElementById("mrune").style.outline = "5px solid darkred"
+          mtoggle = false
+        }
+      } else {
+        document.getElementById("mrune").style.backgroundColor = "red"
+        document.getElementById("mrune").style.outline = "5px solid darkred"
+        mtoggle = false
+      }
+
+      if (rtoggle === true) {
+        if (reb >= rcost) {
+          rrune += 1
+          reb -= rcost
+          rcost *= 1.025
+        } else {
+          document.getElementById("rrune").style.backgroundColor = "blue"
+          document.getElementById("rrune").style.outline = "5px solid darkblue"
+          rtoggle = false
+        }
+      } else {
+        document.getElementById("rrune").style.backgroundColor = "blue"
+        document.getElementById("rrune").style.outline = "5px solid darkblue"
+        rtoggle = false
+      }
+
+      if (ptoggle === true) {
+        if (pres >= pcost) {
+          prune += 1
+          pres -= pcost
+          pcost *= 1.025
+        } else {
+          document.getElementById("prune").style.backgroundColor = "darkviolet"
+          document.getElementById("prune").style.outline = "5px solid purple"
+          ptoggle = false
+        }
+      } else {
+        document.getElementById("prune").style.backgroundColor = "darkviolet"
+        document.getElementById("prune").style.outline = "5px solid purple"
+        ptoggle = false
+      }
+
+      if (atoggle === true) {
+        if (asc >= acost) {
+          arune += 1
+          asc -= acost
+          acost *= 1.025
+        } else {
+          document.getElementById("arune").style.backgroundColor = "yellow"
+          document.getElementById("arune").style.outline = "5px solid #8B8000"
+          atoggle = false
+        }
+      } else {
+        document.getElementById("arune").style.backgroundColor = "yellow"
+        document.getElementById("arune").style.outline = "5px solid #8B8000"
+        atoggle = false
+      }
+
+      if (stoggle === true) {
+        if (sup >= scost) {
+          srune += 1
+          sup -= scost
+          scost *= 1.025
+        } else {
+          document.getElementById("srune").style.backgroundColor = "#0BDA51"
+          document.getElementById("srune").style.outline = "5px solid #00A36C"
+          stoggle = false
+        }
+      } else {
+        document.getElementById("srune").style.backgroundColor = "#0BDA51"
+        document.getElementById("srune").style.outline = "5px solid #00A36C"
+        stoggle = false
+      }
+
+      if (swait === false) {
+        document.getElementById("sactag").innerHTML = "You Need: " + abbr(saccost) + " Ascension"
+      }
+
+    }
+    setInterval(gameLoop, 250)
+  </script>
+
+  <script>
+    // Ignore This, It's Useless For Now
+    const load = (slot) => {
+        window.top.postMessage({
+            action: "load",
+            slot,
+            data: JSON.stringify({Cash: cash})
+        }, "https://galaxy.click");
+        return new Promise((resolve) => {
+            const listener = window.addEventListener("message", (e) => {
+                if (e.origin !== "https://galaxy.click") return;
+                if (e.data.type !== "save_content") return;
+
+                if (e.data.slot !== slot) return;
+                window.removeEventListener("message", listener);
+                resolve(e.data);
+            });
+        });
+    };
+
+    const saveData = await load(0);
+  </script>
+  <script>
+    // Saving
+    if (typeof(Storage) !== "undefined") {
+      window.addEventListener("beforeunload", function() {
+        localStorage.setItem('mruneS', JSON.stringify(mrune))
+        localStorage.setItem('mtoggleS', JSON.stringify(mtoggle))
+        localStorage.setItem('mcostS', JSON.stringify(mcost))
+        localStorage.setItem('rruneS', JSON.stringify(rrune))
+        localStorage.setItem('rtoggleS', JSON.stringify(rtoggle))
+        localStorage.setItem('rcostS', JSON.stringify(rcost))
+        localStorage.setItem('pruneS', JSON.stringify(prune))
+        localStorage.setItem('ptoggleS', JSON.stringify(ptoggle))
+        localStorage.setItem('pcostS', JSON.stringify(pcost))
+        localStorage.setItem('aruneS', JSON.stringify(arune))
+        localStorage.setItem('atoggleS', JSON.stringify(atoggle))
+        localStorage.setItem('acostS', JSON.stringify(acost))
+        localStorage.setItem('sruneS', JSON.stringify(srune))
+        localStorage.setItem('stoggleS', JSON.stringify(stoggle))
+        localStorage.setItem('scostS', JSON.stringify(scost))
+        localStorage.setItem('sacS', JSON.stringify(sac))
+        localStorage.setItem('sacgiveS', JSON.stringify(sacgive))
+        localStorage.setItem('saccostS', JSON.stringify(saccost))
+        localStorage.setItem('swaitS', JSON.stringify(swait))
+        localStorage.setItem('cashS', JSON.stringify(cash))
+        localStorage.setItem('cpriceS', JSON.stringify(cprice))
+        localStorage.setItem('mgiveS', JSON.stringify(mgive))
+        localStorage.setItem('multiS', JSON.stringify(multi))
+        localStorage.setItem('mpriceS', JSON.stringify(mprice))
+        localStorage.setItem('rgiveS', JSON.stringify(rgive))
+        localStorage.setItem('rebS', JSON.stringify(reb))
+        localStorage.setItem('rpriceS', JSON.stringify(rprice))
+        localStorage.setItem('pgiveS', JSON.stringify(pgive))
+        localStorage.setItem('presS', JSON.stringify(pres))
+        localStorage.setItem('ppriceS', JSON.stringify(pprice))
+        localStorage.setItem('agiveS', JSON.stringify(agive))
+        localStorage.setItem('ascS', JSON.stringify(asc))
+        localStorage.setItem('apriceS', JSON.stringify(aprice))
+        localStorage.setItem('sgiveS', JSON.stringify(sgive))
+        localStorage.setItem('supS', JSON.stringify(sup))
+      })
+    } else {
+      alert("Your Browser Does Not Support Local Use, Please Use A Different Browser Or Play Without Saving")
+    }
+  </script>
+</body>
