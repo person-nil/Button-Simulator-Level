@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="break-eternity.js"></script>
+
   <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
 
   <style>
     body {
       background-color: gray;
+      width: device-width;
     }
 
     .text {
       font-family: Fredoka One;
       font-size: 2em;
       text-align: center;
+      height: 50px;
     }
 
     .stat {
@@ -51,12 +57,12 @@
       font-family: Fredoka One;
       font-size: 1.3em;
       border-width: 0px;
-      background-color: red;
+      background-color: lightgray;
       margin: auto;
-      width: 250px;
-      height: 100px;
+      width: 450px;
+      height: 600px;
       border-radius: 15px;
-      outline: 5px solid darkred;
+      outline: 5px solid dimgray;
     }
 
     .rune:hover {
@@ -71,14 +77,14 @@
 
     .tabs {
       font-family: Fredoka One;
+      color: white;
       font-size: 2em;
       border-width: 0px;
-      background-color: white;
-      margin: auto;
+      background-color: black;
       width: 150px;
       height: 50px;
-      border-radius: 15px;
-      outline: 5px solid white;
+      outline: 5px solid dimgray;
+      margin-bottom: -10px;
     }
 
     .tabs:hover {
@@ -90,26 +96,38 @@
       transform: scale(1.1);
       transition: 0.25s;
     }
+
+    .inputs {
+      font-family: Fredoka One;
+      color: black;
+      outline: 5px solid black;
+      width: 375px;
+      height: 25px;
+      font-size: 25px;
+      border-radius: 5px;
+      border-width: 0px;
+    }
   </style>
 
   <script>
-    if (JSON.parse(localStorage.getItem('cashS')) == null) {
+    if (JSON.parse(localStorage.getItem('newPlrS')) == "null") {
       // Variables
-      var mrune = 0
-      var mtoggle = false
-      var mcost = 100
-      var rrune = 0
-      var rtoggle = false
-      var rcost = 250
-      var prune = 0
-      var ptoggle = false
-      var pcost = 500
-      var arune = 0
-      var atoggle = false
-      var acost = 1000
-      var srune = 0
-      var stoggle = false
-      var scost = 2500
+      var newPlr = true
+      var tokens = 0
+      var tokensSec = 0
+      var runeTimeout = 1
+      var runesOpened = 0
+      var common = 0
+      var rare = 0
+      var epic = 0
+      var legendary = 0
+      var ultimate = 0
+      var insane = 0
+      var omega = 0
+      var rtoggle1 = false
+      var rtoggle2 = false
+      var rtoggle3 = false
+      var rtoggle4 = false
       var sac = 0
       var sacgive = 0
       var saccost = 10000
@@ -130,22 +148,65 @@
       var aprice = 2500
       var sgive = 1
       var sup = 1
+      var sprice = 3500
+      var tgive = 1
+      var tran = 1
+      var tprice = 5000
+      var egive = 1
+      var eter = 1
     } else {
-      var mrune = JSON.parse(localStorage.getItem('mruneS'))
-      var mtoggle = JSON.parse(localStorage.getItem('mtoggleS'))
-      var mcost = JSON.parse(localStorage.getItem('mcostS'))
-      var rrune = JSON.parse(localStorage.getItem('rruneS'))
-      var rtoggle = JSON.parse(localStorage.getItem('rtoggleS'))
-      var rcost = JSON.parse(localStorage.getItem('rcostS'))
-      var prune = JSON.parse(localStorage.getItem('pruneS'))
-      var ptoggle = JSON.parse(localStorage.getItem('ptoggleS'))
-      var pcost = JSON.parse(localStorage.getItem('pcostS'))
-      var arune = JSON.parse(localStorage.getItem('aruneS'))
-      var atoggle = JSON.parse(localStorage.getItem('atoggleS'))
-      var acost = JSON.parse(localStorage.getItem('acostS'))
-      var srune = JSON.parse(localStorage.getItem('sruneS'))
-      var stoggle = JSON.parse(localStorage.getItem('stoggleS'))
-      var scost = JSON.parse(localStorage.getItem('scostS'))
+      var newPlr = true
+      var tokens = 0
+      var tokensSec = 0
+      var runeTimeout = 1
+      var runesOpened = 0
+      var common = 0
+      var rare = 0
+      var epic = 0
+      var legendary = 0
+      var ultimate = 0
+      var insane = 0
+      var omega = 0
+      var rtoggle1 = false
+      var rtoggle2 = false
+      var rtoggle3 = false
+      var rtoggle4 = false
+      var sac = 0
+      var sacgive = 0
+      var saccost = 10000
+      var swait = false
+      var cash = 1
+      var cprice = 50
+      var mgive = 1
+      var multi = 1
+      var mprice = 1000
+      var rgive = 1
+      var reb = 1
+      var rprice = 1500
+      var pgive = 1
+      var pres = 1
+      var pprice = 2000
+      var agive = 1
+      var asc = 1
+      var aprice = 2500
+      var sgive = 1
+      var sup = 1
+      var sprice = 3500
+      var tgive = 1
+      var tran = 1
+      var tprice = 5000
+      var egive = 1
+      var eter = 1
+
+      var newPlr = JSON.parse(localStorage.getItem('newPlrS'))
+      var tokens = JSON.parse(localStorage.getItem('tokensS'))
+      var runesOpened = JSON.parse(localStorage.getItem('runesOpenedS'))
+      var common = JSON.parse(localStorage.getItem('commonS'))
+      var rare = JSON.parse(localStorage.getItem('rareS'))
+      var epic = JSON.parse(localStorage.getItem('epicS'))
+      var legendary = JSON.parse(localStorage.getItem('legendaryS'))
+      var ultimate = JSON.parse(localStorage.getItem('ultimateS'))
+      var insane = JSON.parse(localStorage.getItem('insaneS'))
       var sac = JSON.parse(localStorage.getItem('sacS'))
       var sacgive = JSON.parse(localStorage.getItem('sacgiveS'))
       var saccost = JSON.parse(localStorage.getItem('saccostS'))
@@ -166,20 +227,49 @@
       var aprice = JSON.parse(localStorage.getItem('apriceS'))
       var sgive = JSON.parse(localStorage.getItem('sgiveS'))
       var sup = JSON.parse(localStorage.getItem('supS'))
+      var sprice = JSON.parse(localStorage.getItem('spriceS'))
+      var tgive = JSON.parse(localStorage.getItem('tgiveS'))
+      var tran = JSON.parse(localStorage.getItem('tranS'))
+      var tprice = JSON.parse(localStorage.getItem('tpriceS'))
+      var egive = JSON.parse(localStorage.getItem('egiveS'))
+      var eter = JSON.parse(localStorage.getItem('eterS'))
+    }
+
+    if (JSON.parse(localStorage.getItem('tokensS')) == "null" || JSON.parse(localStorage.getItem('tranS')) == "null" || JSON.parse(localStorage.getItem('tranS')) == 0 || JSON.parse(localStorage.getItem('eterS')) == "null" || JSON.parse(localStorage.getItem('eterS')) == 0 || eter == 0 || tran == 0) {
+      var tokens = 0
+      var tokensSec = 0
+      var runeTimeout = 1
+      var runesOpened = 0
+      var common = 0
+      var rare = 0
+      var epic = 0
+      var legendary = 0
+      var ultimate = 0
+      var insane = 0
+      var omega = 0
+      var rtoggle1 = false
+      var rtoggle2 = false
+      var rtoggle3 = false
+      var rtoggle4 = false
+      var sprice = 3500
+      var tgive = 1
+      var tran = 1
+      var tprice = 5000
+      var egive = 1
+      var eter = 1
     }
   </script>
-</head>
+
 <body>
-  <div style="display: flex; justify-content: space-around">
-    <button id="sacrifice" class="tabs" style="outline: 5px solid white; background: lightgray; color: white; background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);" onclick="sacrifice()">Sacrifice</button>
-  </div>
-  <br>
-  <br>
-  <div style="display: flex; justify-content: space-around;">
-    <div id="sacrificetab" class="stat" style="background-color: white; height: 0px; width: 0px; opacity: 0">
+  <h1 class="text" style="font-size: 15px; text-align: auto" id="upd">Everyone Might Need To Hard Reset For New Upd (View Desc For More)</h1>
+  <button id="updButton" onclick="document.getElementById('upd').style.marginLeft = '-2500px'; document.getElementById('updButton').style.marginLeft = '-2500px'; document.getElementById('upd').style.height = '0px'; document.getElementById('updButton').style.height = '0px'" class="tabs" style="margin-left: 50vw; height: 25px; width: 50px; font-size: 20px; outline: 3px solid dimgray">Ok</button>
+
+  <div style="display: flex; justify-content: space-around; margin: 10px;">
+    <div id="sacrificetab" class="stat" style="background-color: white; height: 0px; width: 0px; opacity: 0; margin: 10px">
       <h1 class="text" style="border-width: 0px; background-color: white; color: lightgray; display: block" id="sactag">You Need: 100K Ascension</h1>
       <h1 class="text" style="border-width: 0px; background-color: white; color: lightgray; display: block" id="sactag2">+0 Sacrifice Point</h1>
       <h1 class="text" style="border-width: 0px; background-color: white; color: lightgray; display: block; font-size: 1.5em;">1 Sacrifice Point = +1x Cash, +0.5x Multi, +0.2x Rebirth, +0.15x Prestige, +0.1x Ascension</h1>
+      <h1 class="text" style="border-width: 0px; background-color: white; color: lightgray; display: block; font-size: 1.5em;">Equation:<br>sac = (log10(asc)^2) - 5</h1>
       <h1 class="text" style="border-width: 0px; background-color: white; color: lightgray; display: block">Are You Sure?</h1>
       <br>
       <br>
@@ -193,7 +283,172 @@
     </div>
   </div>
 
+  <div style="justify-content: space-around; opacity: 0; width: 0px; height: 0px;" id="runetab" class="runes">
+    <div style="display: flex; justify-content: space-around;">
+      <button class="tabs" style="margin-bottom: 0px" onclick="Main()">Main</button>
+    </div>
+    <br>
+    <br>
+    <div style="display: flex; justify-content: space-around; width: 3500px;">
+
+      <div style="border: 5px solid black; width: 575px; height: 1100px">
+        <h1 class="text">~~Info~~</h1>
+        <br>
+        <h1 class="text">Tokens/Min = Ascension / 2.5</h1>
+        <br>
+        <h1 class="text">Each Rune Opened = Ascension - RunePrice / 10 (This will require asc to be more than the price)</h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 class="text" style="color: lightgray">Common: 0.025x Cash, 0.005x Multi</h1>
+        <br>
+        <h1 class="text" style="color: blue">Rare: 0.05x Cash, 0.01x Multi</h1>
+        <h1 class="text" style="color: darkviolet">Epic: 0.1x Cash, 0.025x Multi, 0.01x Rebirths</h1>
+        <br>
+        <h1 class="text" style="color: yellow">Legendary: 0.25x Cash, 0.05x Multi, 0.05x Rebirths</h1>
+        <br>
+        <h1 class="text" style="color: darkorange">Ultimate: 1x Cash, 0.25x Multi, 0.25x Rebirths, 0.1x Prestige</h1>
+        <br>
+        <h1 class="text" style="color: red">Insane: 7.5x Cash, 5x Multi, 2.5x Rebirths, 1x Prestige, 0.5x Ascension</h1>
+      </div>
+
+      <div style="border: 5px solid black; width: 500px">
+        <h1 class="text">~~Stats~~</h1>
+        <h1 id="notifierR" class="text">You Got A -- Rune</h1>
+        <h1 id="Tokens" class="text">You Have -- Tokens</h1>
+        <h1 id="TokensSec" class="text">You Get -- Tokens/Sec</h1>
+        <h1 id="RunesOpened" class="text">You Have -- Runes</h1>
+        <br>
+        <h1 id="CommonStat" class="text" style="color: lightgray">You Have -- Common Runes</h1>
+        <br>
+        <h1 id="RareStat" class="text" style="color: blue">You Have -- Rare Runes</h1>
+        <br>
+        <h1 id="EpicStat" class="text" style="color: darkviolet">You Have -- Epic Runes</h1>
+        <br>
+        <h1 id="LegendaryStat" class="text" style="color: yellow">You Have -- Legendary Runes</h1>
+        <br>
+        <h1 id="UltimateStat" class="text" style="color: darkorange">You Have -- Ultimate Runes</h1>
+        <br>
+        <h1 id="InsaneStat" class="text" style="color: red">You Have -- Insane Runes</h1>
+      </div>
+
+      <div class="rune" id="rune1" onclick="if (rtoggle1 === false) { rtoggle1 = true; rtoggle2 = false; rtoggle3 = false; rtoggle4 = false } else { rtoggle1 = false }">
+        <h1 class="text" style="color: gray">~~Common Rune~~<br>Cost: 1 Token</h1>
+        <br>
+        <div class="button" style="text-align: center; height: 350px">
+          <h1 style="color: gray; font-size: 40px;"><br>Common: 70%</h1>
+          <h1 style="color: blue; font-size: 40px;">Rare: 30%</h1>
+          <h1 style="color: darkviolet; font-size: 40px;">Epic: 0.5%</h1>
+          <h1 style="color: yellow; font-size: 40px;">Legendary: 0.01%</h1>
+        </div>
+      </div>
+
+      <div class="rune" id="rune2" onclick="if (rtoggle2 === false) { rtoggle2 = true; rtoggle1 = false; rtoggle3 = false; rtoggle4 = false } else { rtoggle2 = false }">
+        <h1 class="text" style="color: gray">~~Rare Rune~~<br>Cost: 10 Tokens</h1>
+        <br>
+        <div class="button" style="text-align: center; height: 350px">
+          <h1 style="color: gray; font-size: 40px;"><br>Common: 55%</h1>
+          <h1 style="color: blue; font-size: 40px;">Rare: 45%</h1>
+          <h1 style="color: darkviolet; font-size: 40px;">Epic: 0.5%</h1>
+          <h1 style="color: yellow; font-size: 40px;">Legendary: 0.01%</h1>
+        </div>
+      </div>
+
+      <div class="rune" id="rune3" onclick="if (rtoggle3 === false) { rtoggle3 = true; rtoggle2 = false; rtoggle1 = false; rtoggle4 = false } else { rtoggle3 = false }">
+        <h1 class="text" style="color: gray">~~Epic Rune~~<br>Cost: 100 Token</h1>
+        <br>
+        <div class="button" style="text-align: center; height: 350px">
+          <h1 style="color: blue; font-size: 40px;"><br>Rare: 55%</h1>
+          <h1 style="color: darkviolet; font-size: 40px;">Epic: 45%</h1>
+          <h1 style="color: yellow; font-size: 40px;">Legendary: 0.5%</h1>
+          <h1 style="color: darkorange; font-size: 40px;">Ultimate: 0.01%</h1>
+        </div>
+      </div>
+
+      <div class="rune" id="rune4" onclick="if (rtoggle4 === false) { rtoggle4 = true; rtoggle2 = false; rtoggle3 = false; rtoggle1 = false } else { rtoggle4 = false }">
+        <h1 class="text" style="color: gray">~~Legendary Rune~~<br>Cost: 1k Tokens</h1>
+        <br>
+        <div class="button" style="text-align: center; height: 350px">
+          <h1 style="color: darkviolet; font-size: 40px;"><br>Epic: 70%</h1>
+          <h1 style="color: yellow; font-size: 40px;">Legendary: 30%</h1>
+          <h1 style="color: darkorange; font-size: 40px;">Ultimate: 0.5%</h1>
+          <h1 style="color: red; font-size: 40px;">Insane: 0.01%</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="justify-content: space-around; opacity: 0; width: 0px; height: 0px;" id="settingstab" class="settings">
+    <div style="display: flex; justify-content: space-around;">
+      <button class="tabs" onclick="Main()">Main</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div style="display: flex; justify-content: space-around; width: 600px">
+      <label for="TC" class="text">Text Color:</label>
+      <input type="text" id="TC" name="TC" placeholder="Enter a color, default to reset" onblur="TC()" class="inputs">
+      <br>
+    </div>
+    <div style="display: flex; justify-content: space-around; width: 700px">
+      <br>
+      <label for="BG" class="text">Background Color:</label>
+      <input type="text" id="BG" name="BG" placeholder="Enter a color" onblur="BG()" class="inputs">
+    </div>
+    <br>
+    <h1 class="text" id="notifierS">-</h1>
+    <br>
+    <div style="display: flex; justify-content: space-around;">
+      <button class="tabs" style="background-color: #999999; width: 500px;" onclick="Data(1)">Hard Reset</button>
+      <button class="tabs" style="background-color: #999999; width: 500px;" onclick="Data(2)">Save</button>
+      <button class="tabs" style="background-color: #999999; width: 500px;" onclick="Data(3)" id="AutoSave">Auto Save: On</button>
+    </div>
+  </div>
+
   <div id="main" style="display: flex; justify-content: space-around; opacity: 1">
+
+    <div style="display: table-cell; vertical-align: middle;">
+      <div>
+        <button class="tabs" onclick="Settings()">Settings</button>
+      </div>
+      <br>
+      <div>
+        <button class="tabs" onclick="Runes()">Runes</button>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+      <br>
+      <div>
+        <button id="sacrifice" class="tabs" style="outline: 5px solid white; background: lightgray; color: white; background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);" onclick="sacrifice()">Sacrifice</button>
+      </div>
+    </div>
+
+    <div>
+      <br>
+      <button id="multi" class="button" style="background-color: red; outline: 5px solid darkred; color: darkred;" onmousedown="stat(1)" onmouseup="stat(0)">Multi<br>50 Cash<br>1 Multi</button>
+      <br>
+      <br>
+      <button id="reb" class="button" style="background-color: blue; outline: 5px solid darkblue; color: darkblue;" onclick="stat(2)">Rebirth<br>1k Multi<br>1 Rebirth</button>
+      <br>
+      <br>
+      <button id="pres" class="button" style="background-color: darkviolet; outline: 5px solid purple; color: purple;" onclick="stat(3)">Prestige<br>1.5k Rebirth<br>1 Prestige</button>
+      <br>
+      <br>
+      <button id="asc" class="button" style="background-color: yellow; outline: 5px solid #8B8000; color: #8B8000;" onclick="stat(4)">Ascension<br>2k Prestige<br>1 Ascension</button>
+      <br>
+      <br>
+      <button id="sup" class="button" style="background-color: #0BDA51; outline: 5px solid #00A36C; color: #00A36C;" onclick="stat(5)">Supreme<br>2.5k Ascension<br>1 Supreme</button>
+      <br>
+      <br>
+      <button id="tran" class="button" style="background-color: aqua; outline: 5px solid royalblue; color: royalblue;" onclick="stat(6)">Tranquil<br>3.5k Supreme<br>1 Tranquil</button>
+      <br>
+      <br>
+      <button id="eter" class="button" style="background-color: lightgray; outline: 5px solid darkgray; color: darkgray;" onclick="stat(7)">Eternity<br>2.5k Tranquil<br>1 Eternity</button>
+    </div>
+
     <div>
       <div class="stat" style="background: green; outline: 5px solid darkgreen">
         <h1 id="cashstat" class="text" style="color: darkgreen">Cash: 0</h1>
@@ -218,59 +473,22 @@
       <div class="stat" style="background: #0BDA51; outline: 5px solid #00A36C">
         <h1 id="supstat" class="text" style="color: #00A36C">Supreme: 0</h1>
       </div>
+      <br>
+      <div class="stat" style="background: aqua; outline: 5px solid royalblue">
+        <h1 class="text" id="transtat" style="color: royalblue">Tranquil: 0</h1>
+      </div>
+      <br>
+      <div class="stat" style="background: lightgray; outline: 5px solid darkgray">
+        <h1 id="eterstat" class="text" style="color: darkgray">Supreme: 0</h1>
+      </div>
     </div>
 
-    <div>
-      <br>
-      <br>
-      <button id="mrune" class="rune" onclick="rune(1)">~~Multi Amper~~<br>Cost: 100 Multi<br>Owned: 0<br>Boost: x1</button>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <button id="rrune" class="rune" style="background-color: blue; outline: 5px solid darkblue;" onclick="rune(2)">~~Rebirth Amper~~<br>Cost: Rebirth<br>Owned: 0<br>Boost: x1</button>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <button id="prune" class="rune" style="background-color: darkviolet; outline: 5px solid purple;" onclick="rune(3)">~~Prestige Amper~~<br>Cost: 100 Prestige<br>Owned: 0<br>Boost: x1</button>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <button id="arune" class="rune" style="background-color: yellow; outline: 5px solid #8B8000;" onclick="rune(4)">~~Ascension Amper~~<br>Cost: 100 Ascension<br>Owned: 0<br>Boost: x1</button>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <button id="srune" class="rune" style="background-color: #0BDA51; outline: 5px solid #00A36C;" onclick="rune(5)">~~Supreme Amper~~<br>Cost: 100 Supreme<br>Owned: 0<br>Boost: x1</button>
-    </div>
-
-    <div>
-      <br>
-      <button id="multi" class="button" style="background-color: red; outline: 5px solid darkred; color: darkred;" onclick="stat(1)">Multi<br>50 Cash<br>1 Multi</button>
-      <br>
-      <br>
-      <button id="reb" class="button" style="background-color: blue; outline: 5px solid darkblue; color: darkblue;" onclick="stat(2)">Rebirth<br>1k Multi<br>1 Rebirth</button>
-      <br>
-      <br>
-      <button id="pres" class="button" style="background-color: darkviolet; outline: 5px solid purple; color: purple;" onclick="stat(3)">Prestige<br>1.5k Rebirth<br>1 Prestige</button>
-      <br>
-      <br>
-      <button id="asc" class="button" style="background-color: yellow; outline: 5px solid #8B8000; color: #8B8000;" onclick="stat(4)">Ascension<br>2k Prestige<br>1 Ascension</button>
-      <br>
-      <br>
-      <button id="sup" class="button" style="background-color: #0BDA51; outline: 5px solid #00A36C; color: #00A36C;" onclick="stat(5)">Supreme<br>2.5k Ascension<br>1 Supreme</button>
-    </div>
   </div>
 
   <script>
+  // Main Script
+  var down = false
+
     function abbr(value) {
       var newValue = value;
       if (value < 10000000000000000000) {
@@ -292,17 +510,18 @@
       }
     }
 
-
     function stat(stat) {
+
+      if (stat == 0) {
+        down = false
+      }
+
       if (stat == 1) {
         if (cash >= cprice) {
-          cash = 10
-          cprice *= 1.3
-          multi += mgive * reb * (1 + mrune / 100) * (sac * 0.5 + 1)
-          mgive *= 1.225
-
+          down = true
         }
       }
+
       if (stat == 2) {
         if (multi >= mprice) {
           multi = 1
@@ -310,10 +529,7 @@
           cprice = 50
           mgive = 1
           multi = 1
-          reb += rgive * pres * (1 + rrune / 100) * (sac * 0.2 + 1)
-          mprice *= 1.45
-          rgive *= 1.35
-
+          reb += rgive * pres * (sac * 0.2 + 1) * ((epic / 100) + (legendary / 20) + (ultimate / 4) + (insane * 2.5) + 1)
         }
       }
 
@@ -326,9 +542,7 @@
           mprice = 1000
           rgive = 1
           reb = 1
-          pres += pgive * asc * (1 + prune / 100) * (sac * 0.15 + 1)
-          rprice *= 1.45
-          pgive *= 1.35
+          pres += pgive * asc * (sac * 0.15 + 1) * ((ultimate / 10) + insane + 1)
         }
       }
 
@@ -344,13 +558,11 @@
           pgive = 1
           rprice = 1500
           pres = 1
-          asc += agive * sup * (1 + arune / 100) * (sac * 0.1 + 1)
-          pprice *= 1.60
-          agive *= 1.45
+          asc += agive * sup * (sac * 0.1 + 1) * (insane / 2 + 1)
         }
       }
 
-    if (stat == 5) {
+      if (stat == 5) {
         if (asc >= aprice) {
           cash = 1
           cprice = 50
@@ -365,91 +577,148 @@
           agive = 1
           pprice = 2000
           asc = 1
-          sup += sgive * (1 + srune / 100)
-          aprice *= 1.70
-          sgive *= 1.55
+          sup += sgive * tran
+        }
+      }
+
+      if (stat == 6) {
+        if (sup >= sprice) {
+          cash = 1
+          cprice = 50
+          mgive = 1
+          multi = 1
+          mprice = 1000
+          rgive = 1
+          reb = 1
+          pgive = 1
+          rprice = 1500
+          pres = 1
+          agive = 1
+          pprice = 2000
+          asc = 1
+          aprice = 2500
+          sgive = 1
+          sup = 1
+          tran += tgive * eter
+        }
+      }
+
+      if (stat == 7) {
+        if (tran >= tprice) {
+          cash = 1
+          cprice = 50
+          mgive = 1
+          multi = 1
+          mprice = 1000
+          rgive = 1
+          reb = 1
+          pgive = 1
+          rprice = 1500
+          pres = 1
+          agive = 1
+          pprice = 2000
+          asc = 1
+          aprice = 2500
+          sgive = 1
+          sup = 1
+          sprice = 3500
+          tgive = 1
+          tran = 1
+          eter += egive
         }
       }
     }
 
-    function rune(rune) {
-      if (rune == 1) {
-        if (mtoggle === true) {
-          mtoggle = false
-          document.getElementById("mrune").style.backgroundColor = "red"
-          document.getElementById("mrune").style.outline = "5px solid darkred"
-        } else {
-          stoggle = false
-          mtoggle = true
-          rtoggle = false
-          ptoggle = false
-          atoggle = false
-          document.getElementById("mrune").style.backgroundColor = "green"
-          document.getElementById("mrune").style.outline = "5px solid darkgreen"
+    function statLoop(stat) {
+      if (stat == 1) {
+        if (cash >= cprice * 1.65 && cash < 1000000000) {
+          cprice *= 1.65
+          mgive *= 1.3
+        }
+        if (cash >= cprice * 1.65 && cash >= 1000000000) {
+          cprice *= 1.7
+          mgive *= 1.3
+        }
+        if (cash < cprice * 1.65 && cprice >= 100 && cash < 1000000000) {
+          cprice /= 1.65
+          mgive /= 1.3
+        }
+        if (cash < cprice * 1.65 && cprice >= 100 && cash >= 1000000000) {
+          cprice /= 1.7
+          mgive /= 1.3
+        }
+      }
+      if (stat == 2) {
+        if (multi >= mprice * 1.6 && multi < 1000000) {
+          mprice *= 1.6
+          rgive *= 1.3
+        }
+        if (multi >= mprice * 1.6 && multi >= 1000000) {
+          mprice *= 1.65
+          rgive *= 1.3
+        }
+        if (multi < mprice * 1.6 && mprice >= 1000 * 1.6 && multi < 1000000) {
+          mprice /= 1.6
+          rgive /= 1.3
+        }
+        if (multi < mprice * 1.6 && mprice >= 1000 * 1.6 && multi >= 1000000) {
+          mprice /= 1.65
+          rgive /= 1.3
         }
       }
 
-      if (rune == 2) {
-        if (rtoggle === true) {
-          rtoggle = false
-          document.getElementById("rrune").style.backgroundColor = "blue"
-          document.getElementById("rrune").style.outline = "5px solid darkblue"
-        } else {
-          stoggle = false
-          rtoggle = true
-          mtoggle = false
-          ptoggle = false
-          atoggle = false
-          document.getElementById("rrune").style.backgroundColor = "green"
-          document.getElementById("rrune").style.outline = "5px solid darkgreen"
+      if (stat == 3) {
+        if (reb >= rprice * 1.6) {
+          rprice *= 1.55
+          pgive *= 1.35
+        }
+        if (reb < rprice * 1.6 && rprice >= 1500 * 1.6) {
+          rprice /= 1.55
+          pgive /= 1.35
         }
       }
 
-      if (rune == 3) {
-        if (ptoggle === true) {
-          ptoggle = false
-          document.getElementById("prune").style.backgroundColor = "darkviolet"
-          document.getElementById("prune").style.outline = "5px solid purple"
-        } else {
-          stoggle = false
-          ptoggle = true
-          mtoggle = false
-          rtoggle = false
-          atoggle = false
-          document.getElementById("prune").style.backgroundColor = "green"
-          document.getElementById("prune").style.outline = "5px solid darkgreen"
+      if (stat == 4) {
+        if (pres >= pprice * 1.5) {
+          pprice *= 1.5
+          agive *= 1.35
+        }
+        if (pres < pprice * 1.5 && pprice >= 2000 * 1.6) {
+          pprice /= 1.45
+          agive /= 1.35
         }
       }
 
-      if (rune == 4) {
-        if (atoggle === true) {
-          atoggle = false
-          document.getElementById("arune").style.backgroundColor = "yellow"
-          document.getElementById("arune").style.outline = "5px solid #8B8000"
-        } else {
-          stoggle = false
-          atoggle = true
-          mtoggle = false
-          rtoggle = false
-          ptoggle = false
-          document.getElementById("arune").style.backgroundColor = "green"
-          document.getElementById("arune").style.outline = "5px solid darkgreen"
+      if (stat == 5) {
+        if (asc >= aprice * 1.5) {
+          aprice *= 1.5
+          sgive *= 1.35
+        }
+        if (asc < aprice * 1.5 && aprice >= 2500 * 1.6) {
+          aprice /= 1.5
+          sgive /= 1.35
         }
       }
 
-      if (rune == 5) {
-        if (stoggle === true) {
-          stoggle = false
-          document.getElementById("srune").style.backgroundColor = "#0BDA51"
-          document.getElementById("srune").style.outline = "5px solid #00A36C"
-        } else {
-          stoggle = true
-          atoggle = false
-          mtoggle = false
-          rtoggle = false
-          ptoggle = false
-          document.getElementById("srune").style.backgroundColor = "green"
-          document.getElementById("srune").style.outline = "5px solid darkgreen"
+      if (stat == 6) {
+        if (sup >= sprice * 1.5) {
+          sprice *= 1.5
+          tgive *= 1.35
+        }
+        if (sup < sprice * 1.5 && sprice >= 3500 * 1.6) {
+          sprice /= 1.5
+          tgive /= 1.35
+        }
+      }
+
+      if (stat == 7) {
+        if (tran >= tprice * 1.5) {
+          tprice *= 1.5
+          egive *= 1.35
+        }
+        if (tran < tprice * 1.5 && tprice >= 5000 * 1.6) {
+          tprice /= 1.5
+          egive /= 1.35
         }
       }
     }
@@ -459,12 +728,14 @@
       document.getElementById("sacrificetab").style.width = "0px"
       document.getElementById("sacrificetab").style.height = "0px"
       document.getElementById("main").style.opacity = 1
+      document.getElementById("main").style.height = ""
+      document.getElementById("main").style.width = ""
       swait = false
     }
 
     function yes() {
       if (asc >= saccost) {
-        let sactext = "Are You Sure You Want To Sacrifice?\nSacrificing Will Reset All Stats!"
+        let sactext = "Are You Sure You Want To Sacrifice?\nSacrificing Will Reset All Stats Up To Supreme!"
         if (confirm(sactext) === true) {
           sac += sacgive
           saccost *= 100
@@ -487,7 +758,9 @@
           document.getElementById("sacrificetab").style.opacity = 0
           document.getElementById("sacrificetab").style.width = "0px"
           document.getElementById("sacrificetab").style.height = "0px"
-          document.getElementById("main").style.opacity = 1
+          document.getElementById("main").style.opacity = 0
+          document.getElementById("main").style.height = ""
+          document.getElementById("main").style.width = ""
         }
       } else {
         document.getElementById("sactag").innerHTML = "You Don't Have Enough Ascension!"
@@ -497,52 +770,79 @@
 
     function sacrifice() {
       document.getElementById("sacrificetab").style.opacity = 1
-      document.getElementById("sacrificetab").style.width = "500px"
-      document.getElementById("sacrificetab").style.height = "800px"
+      document.getElementById("sacrificetab").style.width = "750px"
+      document.getElementById("sacrificetab").style.height = "900px"
       document.getElementById("main").style.opacity = 0
-      sacgive = Math.round(Math.log10(asc) * 2)
+      document.getElementById("main").style.height = "0px"
+      document.getElementById("main").style.width = "0px"
+      document.getElementById("settingstab").style.opacity = 0
+      document.getElementById("settingstab").style.height = "0px"
+      document.getElementById("settingstab").style.width = "0px"
+      sacgive = Math.round(Math.pow(Math.log10(asc), 2) - 10)
       document.getElementById("sacstat").innerHTML = "You Have: " + abbr(sac) + " Sacrifice Points"
       document.getElementById("sactag2").innerHTML = "+ " + abbr(sacgive) + " Sacrifice Points"
     }
 
     function gameLoop() {
       if (cash >= cprice) {
-        document.getElementById("multi").style.backgroundColor = "#FF6666"
+        document.getElementById("multi").style.filter = "brightness(130%)"
       } else {
-        document.getElementById("multi").style.backgroundColor = "red"
+        document.getElementById("multi").style.filter = "brightness(85%)"
       }
 
       if (multi >= mprice) {
-        document.getElementById("reb").style.backgroundColor = "#6666FF"
+        document.getElementById("reb").style.filter = "brightness(130%)"
       } else {
-        document.getElementById("reb").style.backgroundColor = "blue"
+        document.getElementById("reb").style.filter = "brightness(85%)"
       }
 
       if (reb >= rprice) {
-        document.getElementById("pres").style.backgroundColor = "#BF40BF"
+        document.getElementById("pres").style.filter = "brightness(130%)"
       } else {
-        document.getElementById("pres").style.backgroundColor = "darkviolet"
+        document.getElementById("pres").style.filter = "brightness(85%)"
       }
 
       if (pres >= pprice) {
-        document.getElementById("asc").style.backgroundColor = "#FFFF8F"
+        document.getElementById("asc").style.filter = "brightness(130%)"
       } else {
-        document.getElementById("asc").style.backgroundColor = "yellow"
+        document.getElementById("asc").style.filter = "brightness(85%)"
       }
 
       if (asc >= aprice) {
-        document.getElementById("sup").style.backgroundColor = "#98FB98"
+        document.getElementById("sup").style.filter = "brightness(130%)"
       } else {
-        document.getElementById("sup").style.backgroundColor = "#0BDA51"
+        document.getElementById("sup").style.filter = "brightness(85%)"
       }
 
-      cash += multi * (sac + 1) * 10
+      if (sup >= sprice) {
+        document.getElementById("tran").style.filter = "brightness(130%)"
+      } else {
+        document.getElementById("tran").style.filter = "brightness(85%)"
+      }
 
-      document.getElementById("multi").innerHTML = "Multi<br>" + abbr(Math.round(cprice)) + " Cash<br>" + abbr(Math.round(mgive * reb * (1 + mrune / 100) * (sac * 0.5 + 1))) + " Multi"
-      document.getElementById("reb").innerHTML = "Rebirth<br>" + abbr(Math.round(mprice)) + " Multi<br>" + abbr(Math.round(rgive * pres * (1 + rrune / 100) * (sac * 0.2 + 1))) + " Rebirth"
-      document.getElementById("pres").innerHTML = "Prestige<br>" + abbr(Math.round(rprice)) + " Rebirth<br>" + abbr(Math.round(pgive * asc * (1 + prune / 100) * (sac * 0.15 + 1))) + " Prestige"
-      document.getElementById("asc").innerHTML = "Ascension<br>" + abbr(Math.round(pprice)) + " Prestige<br>" + abbr(Math.round(agive * sup * (1 + arune / 100) * (sac * 0.1 + 1))) + " Ascension"
-      document.getElementById("sup").innerHTML = "Supreme<br>" + abbr(Math.round(aprice)) + " Ascension<br>" + abbr(Math.round(sgive * (1 + srune / 100))) + " Supreme"
+      if (tran >= tprice) {
+        document.getElementById("eter").style.filter = "brightness(130%)"
+      } else {
+        document.getElementById("eter").style.filter = "brightness(85%)"
+      }
+
+      if (down === true) {
+        if (cash >= cprice) {
+          cash -= cprice
+          multi += mgive * reb * (sac * 0.5 + 1) * ((common / 200) + (rare / 100) + (epic / 40) + (legendary / 20) + (ultimate / 4) + (insane * 5) + 1)
+          document.getElementById("multi").style.filter = "brightness(130%)"
+        }
+      }
+
+      cash += multi * (sac + 1) * 10 * ((common / 40) + (rare / 20) + (epic / 10) + (legendary / 4) + ultimate + (insane * 7.5) + 1)
+
+      document.getElementById("multi").innerHTML = "Multi<br>" + abbr(Math.round(cprice)) + " Cash<br>" + abbr(Math.round(mgive * reb * (sac * 0.5 + 1))) + " Multi"
+      document.getElementById("reb").innerHTML = "Rebirth<br>" + abbr(Math.round(mprice)) + " Multi<br>" + abbr(Math.round(rgive * pres * (sac * 0.2 + 1))) + " Rebirth"
+      document.getElementById("pres").innerHTML = "Prestige<br>" + abbr(Math.round(rprice)) + " Rebirth<br>" + abbr(Math.round(pgive * asc * (sac * 0.15 + 1))) + " Prestige"
+      document.getElementById("asc").innerHTML = "Ascension<br>" + abbr(Math.round(pprice)) + " Prestige<br>" + abbr(Math.round(agive * sup * (sac * 0.1 + 1))) + " Ascension"
+      document.getElementById("sup").innerHTML = "Supreme<br>" + abbr(Math.round(aprice)) + " Ascension<br>" + abbr(Math.round(sgive * tran)) + " Supreme"
+      document.getElementById("tran").innerHTML = "Tranquil<br>" + abbr(Math.round(sprice)) + " Supreme<br>" + abbr(Math.round(tgive * eter)) + " Tranquil"
+      document.getElementById("eter").innerHTML = "Eternity<br>" + abbr(Math.round(tprice)) + " Tranquil<br>" + abbr(Math.round(egive)) + " Eternity"
 
       document.getElementById("cashstat").innerHTML = "Cash: " + abbr(Math.round(cash))
       document.getElementById("multistat").innerHTML = "Multi: " + abbr(Math.round(multi))
@@ -550,99 +850,28 @@
       document.getElementById("presstat").innerHTML = "Prestige: " + abbr(Math.round(pres - 1))
       document.getElementById("ascstat").innerHTML = "Ascension: " + abbr(Math.round(asc - 1))
       document.getElementById("supstat").innerHTML = "Supreme: " + abbr(Math.round(sup - 1))
-
-      document.getElementById("mrune").innerHTML = "~~Multi Amper~~<br>Cost: " + abbr(Math.round(mcost)) + " Multi<br>Owned: " + abbr(Math.round(mrune)) + "<br>Boost: +x" + abbr(Math.round(mrune) / 100)
-      document.getElementById("rrune").innerHTML = "~~Rebirth Amper~~<br>Cost: " + abbr(Math.round(rcost)) + " Rebirth<br>Owned: " + abbr(Math.round(rrune)) + "<br>Boost: +x" + abbr(Math.round(rrune) / 100)
-      document.getElementById("prune").innerHTML = "~~Prestige Amper~~<br>Cost: " + abbr(Math.round(pcost)) + " Prestige<br>Owned: " + abbr(Math.round(prune)) + "<br>Boost: +x" + abbr(Math.round(prune) / 100)
-      document.getElementById("arune").innerHTML = "~~Ascension Amper~~<br>Cost: " + abbr(Math.round(acost)) + " Ascension<br>Owned: " + abbr(Math.round(arune)) + "<br>Boost: +x" + abbr(Math.round(arune) / 100)
-      document.getElementById("srune").innerHTML = "~~Supreme Amper~~<br>Cost: " + abbr(Math.round(scost)) + " Supreme<br>Owned: " + abbr(Math.round(srune)) + "<br>Boost: +x" + abbr(Math.round(srune) / 100)
-
-      if (mtoggle === true) {
-        if (multi >= mcost) {
-          mrune += 1
-          multi -= mcost
-          mcost *= 1.025
-        } else {
-          document.getElementById("mrune").style.backgroundColor = "red"
-          document.getElementById("mrune").style.outline = "5px solid darkred"
-          mtoggle = false
-        }
-      } else {
-        document.getElementById("mrune").style.backgroundColor = "red"
-        document.getElementById("mrune").style.outline = "5px solid darkred"
-        mtoggle = false
-      }
-
-      if (rtoggle === true) {
-        if (reb >= rcost) {
-          rrune += 1
-          reb -= rcost
-          rcost *= 1.025
-        } else {
-          document.getElementById("rrune").style.backgroundColor = "blue"
-          document.getElementById("rrune").style.outline = "5px solid darkblue"
-          rtoggle = false
-        }
-      } else {
-        document.getElementById("rrune").style.backgroundColor = "blue"
-        document.getElementById("rrune").style.outline = "5px solid darkblue"
-        rtoggle = false
-      }
-
-      if (ptoggle === true) {
-        if (pres >= pcost) {
-          prune += 1
-          pres -= pcost
-          pcost *= 1.025
-        } else {
-          document.getElementById("prune").style.backgroundColor = "darkviolet"
-          document.getElementById("prune").style.outline = "5px solid purple"
-          ptoggle = false
-        }
-      } else {
-        document.getElementById("prune").style.backgroundColor = "darkviolet"
-        document.getElementById("prune").style.outline = "5px solid purple"
-        ptoggle = false
-      }
-
-      if (atoggle === true) {
-        if (asc >= acost) {
-          arune += 1
-          asc -= acost
-          acost *= 1.025
-        } else {
-          document.getElementById("arune").style.backgroundColor = "yellow"
-          document.getElementById("arune").style.outline = "5px solid #8B8000"
-          atoggle = false
-        }
-      } else {
-        document.getElementById("arune").style.backgroundColor = "yellow"
-        document.getElementById("arune").style.outline = "5px solid #8B8000"
-        atoggle = false
-      }
-
-      if (stoggle === true) {
-        if (sup >= scost) {
-          srune += 1
-          sup -= scost
-          scost *= 1.025
-        } else {
-          document.getElementById("srune").style.backgroundColor = "#0BDA51"
-          document.getElementById("srune").style.outline = "5px solid #00A36C"
-          stoggle = false
-        }
-      } else {
-        document.getElementById("srune").style.backgroundColor = "#0BDA51"
-        document.getElementById("srune").style.outline = "5px solid #00A36C"
-        stoggle = false
-      }
+      document.getElementById("transtat").innerHTML = "Tranquil: " + abbr(Math.round(tran - 1))
+      document.getElementById("eterstat").innerHTML = "Eternity: " + abbr(Math.round(eter - 1))
 
       if (swait === false) {
         document.getElementById("sactag").innerHTML = "You Need: " + abbr(saccost) + " Ascension"
       }
-
     }
+
     setInterval(gameLoop, 250)
+  </script>
+
+  <script>
+    function LoopStats() {
+      statLoop(1)
+      statLoop(2)
+      statLoop(3)
+      statLoop(4)
+      statLoop(5)
+      statLoop(6)
+      statLoop(7)
+    }
+    setInterval(LoopStats, 10)
   </script>
 
   <script>
@@ -667,25 +896,20 @@
 
     const saveData = await load(0);
   </script>
+
   <script>
     // Saving
     if (typeof(Storage) !== "undefined") {
       window.addEventListener("beforeunload", function() {
-        localStorage.setItem('mruneS', JSON.stringify(mrune))
-        localStorage.setItem('mtoggleS', JSON.stringify(mtoggle))
-        localStorage.setItem('mcostS', JSON.stringify(mcost))
-        localStorage.setItem('rruneS', JSON.stringify(rrune))
-        localStorage.setItem('rtoggleS', JSON.stringify(rtoggle))
-        localStorage.setItem('rcostS', JSON.stringify(rcost))
-        localStorage.setItem('pruneS', JSON.stringify(prune))
-        localStorage.setItem('ptoggleS', JSON.stringify(ptoggle))
-        localStorage.setItem('pcostS', JSON.stringify(pcost))
-        localStorage.setItem('aruneS', JSON.stringify(arune))
-        localStorage.setItem('atoggleS', JSON.stringify(atoggle))
-        localStorage.setItem('acostS', JSON.stringify(acost))
-        localStorage.setItem('sruneS', JSON.stringify(srune))
-        localStorage.setItem('stoggleS', JSON.stringify(stoggle))
-        localStorage.setItem('scostS', JSON.stringify(scost))
+        localStorage.setItem('newPlrS', JSON.stringify(false))
+        localStorage.setItem('tokensS', JSON.stringify(tokens))
+        localStorage.setItem('runesOpenedS', JSON.stringify(runesOpened))
+        localStorage.setItem('commonS', JSON.stringify(common))
+        localStorage.setItem('rareS', JSON.stringify(rare))
+        localStorage.setItem('epicS', JSON.stringify(epic))
+        localStorage.setItem('legendaryS', JSON.stringify(legendary))
+        localStorage.setItem('ultimateS', JSON.stringify(ultimate))
+        localStorage.setItem('insaneS', JSON.stringify(insane))
         localStorage.setItem('sacS', JSON.stringify(sac))
         localStorage.setItem('sacgiveS', JSON.stringify(sacgive))
         localStorage.setItem('saccostS', JSON.stringify(saccost))
@@ -706,10 +930,456 @@
         localStorage.setItem('apriceS', JSON.stringify(aprice))
         localStorage.setItem('sgiveS', JSON.stringify(sgive))
         localStorage.setItem('supS', JSON.stringify(sup))
+        localStorage.setItem('spriceS', JSON.stringify(sprice))
+        localStorage.setItem('tgiveS', JSON.stringify(tgive))
+        localStorage.setItem('tranS', JSON.stringify(tran))
+        localStorage.setItem('tpriceS', JSON.stringify(tprice))
+        localStorage.setItem('egiveS', JSON.stringify(egive))
+        localStorage.setItem('eterS', JSON.stringify(eter))
       })
     } else {
       alert("Your Browser Does Not Support Local Use, Please Use A Different Browser Or Play Without Saving")
     }
+  </script>
+
+  <script>
+    const Sdiv = document.getElementById("settingstab").children;
+    const Rdiv = document.getElementById("runetab").children
+    const settings = document.getElementById("settingstab")
+    const runes = document.getElementById("runetab")
+    const defaultR = []
+    const defaultS = []
+
+    for (var i=0; i < Rdiv.length; i++) {
+      defaultR.push(Rdiv[i].style.height)
+      Rdiv[i].style.height = "0px"
+      runes.style.marginLeft = "-3500px"
+    }
+
+    for (var i=0; i < Sdiv.length; i++) {
+      defaultS.push(Sdiv[i].style.height)
+      Sdiv[i].style.height = "0px"
+      settings.style.marginLeft = "-2500px"
+    }
+  </script>
+
+  <script>
+  // Tab Stuff
+  const defaultC = []
+  const main = document.getElementById("main")
+  var onS = false
+  var onR = false
+  var AutoSave = true
+  var Sloops = 0
+
+  function TC() {
+    if (onS === true) {
+      const TC = document.getElementById("TC").value;
+      const all = document.getElementsByTagName("*");
+      const dont = document.getElementsByClassName("tabs");
+
+      for (var i=0, max=all.length; i < max; i++) {
+        defaultC.push(all[i].style.color);
+        all[i].style.color = TC;
+      }
+      if (TC == "default" || TC == "") {
+        for (var i=0, max=all.length; i < max; i++) {
+          all[i].style.color = defaultC[i];
+        }
+      }
+      for (var i=0, max=dont.length; i < max; i++) {
+        dont[i].style.color = "white"
+      }
+    }
+  }
+
+  function BG() {
+    if (onS === true) {
+      const BG = document.getElementById("BG").value
+      document.body.style.background = BG
+    }
+  }
+
+  function Settings() {
+    settings.style.opacity = 1
+    settings.style.width = ""
+    settings.style.height = ""
+    main.style.opacity = 0
+    main.style.width = "0px"
+    main.style.height = "0px"
+    main.style.marginLeft = "-2500px"
+    onS = true
+    for (var i = 0; i < Sdiv.length; i++) {
+      Sdiv[i].style.height = defaultS[i]
+      settings.style.marginLeft = "0px"
+    }
+  }
+
+  function Main() {
+    main.style.opacity = 1
+    main.style.width = ""
+    main.style.height = ""
+    main.style.marginLeft = "0px"
+    settings.style.opacity = 0
+    settings.style.width = "0px"
+    settings.style.height = "0px"
+    settings.style.marginLeft = "-2500px"
+    runes.style.opacity = 0
+    runes.style.width = "0px"
+    runes.style.height = "0px"
+    runes.style.marginLeft = "-3500px"
+    onS = false
+    onR = false
+  }
+
+  function Data(type) {
+    if (type == 1) {
+      if (confirm("Are You Sure You Wanna Completely Reset Everything?") === true) {
+        if (confirm("Are You Really Sure?") === true) {
+          localStorage.clear()
+          newPlr = true
+          tokens = 0
+          tokensSec = 0
+          runeTimeout = 1
+          runesOpened = 0
+          common = 0
+          rare = 0
+          epic = 0
+          legendary = 0
+          ultimate = 0
+          insane = 0
+          omega = 0
+          rtoggle1 = false
+          rtoggle2 = false
+          rtoggle3 = false
+          rtoggle4 = false
+          sac = 0
+          sacgive = 0
+          saccost = 10000
+          swait = false
+          cash = 1
+          cprice = 50
+          mgive = 1
+          multi = 1
+          mprice = 1000
+          rgive = 1
+          reb = 1
+          rprice = 1500
+          pgive = 1
+          pres = 1
+          pprice = 2000
+          agive = 1
+          asc = 1
+          aprice = 2500
+          sgive = 1
+          sup = 1
+          sprice = 3500
+          tgive = 1
+          tran = 1
+          tprice = 5000
+          egive = 1
+          eter = 1
+          document.getElementById("notifierS").innerHTML = "All Data Erased"
+        }
+      }
+    }
+
+    if (type == 2) {
+      localStorage.setItem('newPlrS', JSON.stringify(false))
+      localStorage.setItem('tokensS', JSON.stringify(tokens))
+      localStorage.setItem('runesOpenedS', JSON.stringify(runesOpened))
+      localStorage.setItem('commonS', JSON.stringify(common))
+      localStorage.setItem('rareS', JSON.stringify(rare))
+      localStorage.setItem('epicS', JSON.stringify(epic))
+      localStorage.setItem('legendaryS', JSON.stringify(legendary))
+      localStorage.setItem('ultimateS', JSON.stringify(ultimate))
+      localStorage.setItem('insaneS', JSON.stringify(insane))
+      localStorage.setItem('sacS', JSON.stringify(sac))
+      localStorage.setItem('sacgiveS', JSON.stringify(sacgive))
+      localStorage.setItem('saccostS', JSON.stringify(saccost))
+      localStorage.setItem('swaitS', JSON.stringify(swait))
+      localStorage.setItem('cashS', JSON.stringify(cash))
+      localStorage.setItem('cpriceS', JSON.stringify(cprice))
+      localStorage.setItem('mgiveS', JSON.stringify(mgive))
+      localStorage.setItem('multiS', JSON.stringify(multi))
+      localStorage.setItem('mpriceS', JSON.stringify(mprice))
+      localStorage.setItem('rgiveS', JSON.stringify(rgive))
+      localStorage.setItem('rebS', JSON.stringify(reb))
+      localStorage.setItem('rpriceS', JSON.stringify(rprice))
+      localStorage.setItem('pgiveS', JSON.stringify(pgive))
+      localStorage.setItem('presS', JSON.stringify(pres))
+      localStorage.setItem('ppriceS', JSON.stringify(pprice))
+      localStorage.setItem('agiveS', JSON.stringify(agive))
+      localStorage.setItem('ascS', JSON.stringify(asc))
+      localStorage.setItem('apriceS', JSON.stringify(aprice))
+      localStorage.setItem('sgiveS', JSON.stringify(sgive))
+      localStorage.setItem('supS', JSON.stringify(sup))
+      localStorage.setItem('spriceS', JSON.stringify(sprice))
+      localStorage.setItem('tgiveS', JSON.stringify(tgive))
+      localStorage.setItem('tranS', JSON.stringify(tran))
+      localStorage.setItem('tpriceS', JSON.stringify(tprice))
+      localStorage.setItem('egiveS', JSON.stringify(egive))
+      localStorage.setItem('eterS', JSON.stringify(eter))
+      Sloops += 1
+      document.getElementById("notifierS").innerHTML = "Saved (" + Sloops + ")"
+
+    }
+
+    if (type == 3) {
+      if (AutoSave === false) {
+        AutoSave = true
+        document.getElementById("AutoSave").innerHTML = "Auto Save: On"
+      } else {
+        AutoSave = false
+        document.getElementById("AutoSave").innerHTML = "Auto Save: Off"
+      }
+    }
+  }
+
+  function Autosave() {
+    if (AutoSave === true) {
+        localStorage.setItem('newPlrS', JSON.stringify(false))
+        localStorage.setItem('tokensS', JSON.stringify(tokens))
+        localStorage.setItem('runesOpenedS', JSON.stringify(runesOpened))
+        localStorage.setItem('commonS', JSON.stringify(common))
+        localStorage.setItem('rareS', JSON.stringify(rare))
+        localStorage.setItem('epicS', JSON.stringify(epic))
+        localStorage.setItem('legendaryS', JSON.stringify(legendary))
+        localStorage.setItem('ultimateS', JSON.stringify(ultimate))
+        localStorage.setItem('insaneS', JSON.stringify(insane))
+        localStorage.setItem('sacS', JSON.stringify(sac))
+        localStorage.setItem('sacgiveS', JSON.stringify(sacgive))
+        localStorage.setItem('saccostS', JSON.stringify(saccost))
+        localStorage.setItem('swaitS', JSON.stringify(swait))
+        localStorage.setItem('cashS', JSON.stringify(cash))
+        localStorage.setItem('cpriceS', JSON.stringify(cprice))
+        localStorage.setItem('mgiveS', JSON.stringify(mgive))
+        localStorage.setItem('multiS', JSON.stringify(multi))
+        localStorage.setItem('mpriceS', JSON.stringify(mprice))
+        localStorage.setItem('rgiveS', JSON.stringify(rgive))
+        localStorage.setItem('rebS', JSON.stringify(reb))
+        localStorage.setItem('rpriceS', JSON.stringify(rprice))
+        localStorage.setItem('pgiveS', JSON.stringify(pgive))
+        localStorage.setItem('presS', JSON.stringify(pres))
+        localStorage.setItem('ppriceS', JSON.stringify(pprice))
+        localStorage.setItem('agiveS', JSON.stringify(agive))
+        localStorage.setItem('ascS', JSON.stringify(asc))
+        localStorage.setItem('apriceS', JSON.stringify(aprice))
+        localStorage.setItem('sgiveS', JSON.stringify(sgive))
+        localStorage.setItem('supS', JSON.stringify(sup))
+        localStorage.setItem('spriceS', JSON.stringify(sprice))
+        localStorage.setItem('tgiveS', JSON.stringify(tgive))
+        localStorage.setItem('tranS', JSON.stringify(tran))
+        localStorage.setItem('tpriceS', JSON.stringify(tprice))
+        localStorage.setItem('egiveS', JSON.stringify(egive))
+        localStorage.setItem('eterS', JSON.stringify(eter))
+      Sloops += 1
+      document.getElementById("notifierS").innerHTML = "Saved (" + Sloops + ")"
+    }
+  }
+
+  setInterval(Autosave, 10000)
+
+  function RandomR1(){
+    var num = Math.random() * 100;
+    if (num < 70) return 1; // 70%
+    else if (num < 99.5) return 2; // 30%
+    else if (num < 99.99) return 3; // 0.5%
+    else if (num < 1) return 4; // 0.01%
+  }
+
+  function RandomR2(){
+    var num = Math.random() * 100;
+    if (num < 55) return 1; // 55%
+    else if (num < 99.5) return 2; // 45%
+    else if (num < 99.99) return 3; // 0.5%
+    else if (num < 1) return 4; // 0.01%
+  }
+
+  function Runes() {
+    runes.style.opacity = 1
+    runes.style.width = ""
+    runes.style.height = ""
+    main.style.opacity = 0
+    main.style.width = "0px"
+    main.style.height = "0px"
+    main.style.marginLeft = "-2500px"
+    onR = true
+    for (var i = 0; i < Rdiv.length; i++) {
+      Rdiv[i].style.height = defaultR[i]
+      runes.style.marginLeft = "0px"
+    }
+  }
+
+  var runeR = ""
+  function rune(rune) {
+    if (onR === false) { return "" }
+    runesOpened += 1
+    if (rune == 1) {
+      document.getElementById("rune1").style.filter = "brightness(150%)"
+      runeR = RandomR1()
+      if (runeR == 1) {
+        common += 1
+      }
+      if (runeR == 2) {
+        rare += 1
+      }
+      if (runeR == 3) {
+        epic += 1
+      }
+      if (runeR == 4) {
+        legendary += 1
+      }
+    }
+    if (rune == 2) {
+      document.getElementById("rune2").style.filter = "brightness(150%)"
+      runeR = RandomR2()
+      if (runeR == 1) {
+        common += 1
+      }
+      if (runeR == 2) {
+        rare += 1
+      }
+      if (runeR == 3) {
+        epic += 1
+      }
+      if (runeR == 4) {
+        legendary += 1
+      }
+    }
+    if (rune == 3) {
+      document.getElementById("rune3").style.filter = "brightness(150%)"
+      runeR = RandomR2()
+      if (runeR == 1) {
+        rare += 1
+      }
+      if (runeR == 2) {
+        epic += 1
+      }
+      if (runeR == 3) {
+        legendary += 1
+      }
+      if (runeR == 4) {
+        ultimate += 1
+      }
+    }
+    if (rune == 4) {
+      document.getElementById("rune4").style.filter = "brightness(150%)"
+      runeR = RandomR1()
+      if (runeR == 1) {
+        epic += 1
+      }
+      if (runeR == 2) {
+        legendary += 1
+      }
+      if (runeR == 3) {
+        ultimate += 1
+      }
+      if (runeR == 4) {
+        insane += 1
+      }
+    }
+  }
+
+  var runeGotten = ""
+
+  function RuneLoop() {
+    tokensSec = (asc / 2.5) - (1 / 2.5)
+    tokens += (tokensSec / runeTimeout) / 60
+    document.getElementById("Tokens").innerHTML = "You Have " + abbr(Math.round(tokens)) + " Tokens"
+    document.getElementById("TokensSec").innerHTML = "You Get " + Math.round(tokensSec * 10) / 10 + " Tokens/Min"
+    document.getElementById("RunesOpened").innerHTML = "You Have Opened " + abbr(Math.round(runesOpened)) + " Runes"
+
+    document.getElementById("CommonStat").innerHTML = "You Have " + common + " Common Runes"
+    document.getElementById("RareStat").innerHTML = "You Have " + rare + " Rare Runes"
+    document.getElementById("EpicStat").innerHTML = "You Have " + epic + " Epic Runes"
+    document.getElementById("LegendaryStat").innerHTML = "You Have " + legendary + " Legendary Runes"
+    document.getElementById("UltimateStat").innerHTML = "You Have " + ultimate + " Ultimate Runes"
+    document.getElementById("InsaneStat").innerHTML = "You Have " + insane + " Insane Runes"
+
+    if (rtoggle1 === true && tokens >= 1 && asc >= 1) {
+      asc -= 0.1
+      rune(1)
+      tokens -= 1
+      document.getElementById("notifierR").innerHTML = "You Got A " + runeGotten + " Rune"
+      if (runeR == 1) {
+        runeGotten = "Common"
+      }
+      if (runeR == 2) {
+        runeGotten = "Rare"
+      }
+      if (runeR == 3) {
+        runeGotten = "Epic"
+      }
+      if (runeR == 4) {
+        runeGotten = "Legendary"
+      }
+    } else {
+      document.getElementById("rune1").style.filter = "brightness(100%)"
+    }
+    if (rtoggle2 === true && tokens >= 10 && asc >= 1) {
+      asc -= 1
+      rune(2)
+      tokens -= 10
+      document.getElementById("notifierR").innerHTML = "You Got A " + runeGotten + " Rune"
+      if (runeR == 1) {
+        runeGotten = "Common"
+      }
+      if (runeR == 2) {
+        runeGotten = "Rare"
+      }
+      if (runeR == 3) {
+        runeGotten = "Epic"
+      }
+      if (runeR == 4) {
+        runeGotten = "Legendary"
+      }
+    } else {
+      document.getElementById("rune2").style.filter = "brightness(100%)"
+    }
+    if (rtoggle3 === true && tokens >= 100 && asc >= 10) {
+      asc -= 10
+      rune(3)
+      tokens -= 100
+      document.getElementById("notifierR").innerHTML = "You Got A " + runeGotten + " Rune"
+      if (runeR == 1) {
+        runeGotten = "Rare"
+      }
+      if (runeR == 2) {
+        runeGotten = "Epic"
+      }
+      if (runeR == 3) {
+        runeGotten = "Legendary"
+      }
+      if (runeR == 4) {
+        runeGotten = "Ultimate"
+      }
+    } else {
+      document.getElementById("rune3").style.filter = "brightness(100%)"
+    }
+    if (rtoggle4 === true && tokens >= 1000 && asc >= 100) {
+      asc -= 100
+      rune(4)
+      tokens -= 1000
+      document.getElementById("notifierR").innerHTML = "You Got A " + runeGotten + " Rune"
+      if (runeR == 1) {
+        runeGotten = "Epic"
+      }
+      if (runeR == 2) {
+        runeGotten = "Legendary"
+      }
+      if (runeR == 3) {
+        runeGotten = "Ultimate"
+      }
+      if (runeR == 4) {
+        runeGotten = "Insane"
+      }
+    } else {
+      document.getElementById("rune4").style.filter = "brightness(100%)"
+    }
+  }
+
+  setInterval(RuneLoop, 1000 / runeTimeout)
   </script>
 </body>
 </html>
