@@ -385,7 +385,7 @@
 
     <div>
       <br>
-      <button id="multi" class="button" style="background-color: red; outline: 5px solid darkred; color: darkred;" onmousedown="stat(1)" onmouseup="stat(0)">Button Simulator Level<br>Click To Play</button>
+      <button id="multi" class="button" style="background-color: red; outline: 5px solid darkred; color: darkred;" onmousedown="stat(1)" onmouseup="stat(0)" onclick="stat(0.5)">Button Simulator Level<br>Click To Play</button>
       <br>
       <br>
       <button id="reb" class="button" style="background-color: blue; outline: 5px solid darkblue; color: darkblue;" onclick="stat(2)">Rebirth<br>1k Multi<br>1 Rebirth</button>
@@ -479,6 +479,14 @@
       if (stat == 1) {
         if (cash.gte(cprice)) {
           down = true
+        }
+      }
+      
+      if (stat == 0.5) {
+        if (cash.gte(cprice)) {
+          cash = cash.sub(cprice)
+          multi = multi.plus(mgive.times(reb).times(sac * 0.5 + 1).times((common / 200) + (rare / 100) + (epic / 40) + (legendary / 20) + (ultimate / 4) + (insane * 5) + 1))
+          document.getElementById("multi").style.filter = "brightness(130%)"
         }
       }
 
