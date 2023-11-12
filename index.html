@@ -35,7 +35,7 @@
       border-width: 0px;
       background-color: white;
       margin: auto;
-      width: 350px;
+      width: 400px;
       height: 150px;
       display: block;
       border-radius: 15px;
@@ -132,71 +132,31 @@
       var sacgive = 0
       var saccost = 10000
       var swait = false
-      var cash = 1
-      var cprice = 50
-      var mgive = 1
-      var multi = 1
-      var mprice = 1000
-      var rgive = 1
-      var reb = 1
-      var rprice = 1500
-      var pgive = 1
-      var pres = 1
-      var pprice = 2000
-      var agive = 1
-      var asc = 1
-      var aprice = 2500
-      var sgive = 1
-      var sup = 1
-      var sprice = 3500
-      var tgive = 1
-      var tran = 1
-      var tprice = 5000
-      var egive = 1
-      var eter = 1
+      var cash = new Decimal(1)
+      var cprice = new Decimal(50)
+      var mgive = new Decimal(1)
+      var multi = new Decimal(1)
+      var mprice = new Decimal(250)
+      var rgive = new Decimal(1)
+      var reb = new Decimal(1)
+      var rprice = new Decimal(1000)
+      var pgive = new Decimal(1)
+      var pres = new Decimal(1)
+      var pprice = new Decimal(1500)
+      var agive = new Decimal(1)
+      var asc = new Decimal(1)
+      var aprice = new Decimal(2000)
+      var sgive = new Decimal(1)
+      var sup = new Decimal(1)
+      var sprice = new Decimal(3000)
+      var tgive = new Decimal(1)
+      var tran = new Decimal(1)
+      var tprice = new Decimal(4500)
+      var egive = new Decimal(1)
+      var eter = new Decimal(1)
     } else {
-      var newPlr = true
-      var tokens = 0
       var tokensSec = 0
       var runeTimeout = 1
-      var runesOpened = 0
-      var common = 0
-      var rare = 0
-      var epic = 0
-      var legendary = 0
-      var ultimate = 0
-      var insane = 0
-      var omega = 0
-      var rtoggle1 = false
-      var rtoggle2 = false
-      var rtoggle3 = false
-      var rtoggle4 = false
-      var sac = 0
-      var sacgive = 0
-      var saccost = 10000
-      var swait = false
-      var cash = 1
-      var cprice = 50
-      var mgive = 1
-      var multi = 1
-      var mprice = 1000
-      var rgive = 1
-      var reb = 1
-      var rprice = 1500
-      var pgive = 1
-      var pres = 1
-      var pprice = 2000
-      var agive = 1
-      var asc = 1
-      var aprice = 2500
-      var sgive = 1
-      var sup = 1
-      var sprice = 3500
-      var tgive = 1
-      var tran = 1
-      var tprice = 5000
-      var egive = 1
-      var eter = 1
 
       var newPlr = JSON.parse(localStorage.getItem('newPlrS'))
       var tokens = JSON.parse(localStorage.getItem('tokensS'))
@@ -211,58 +171,55 @@
       var sacgive = JSON.parse(localStorage.getItem('sacgiveS'))
       var saccost = JSON.parse(localStorage.getItem('saccostS'))
       var swait = JSON.parse(localStorage.getItem('swaitS'))
-      var cash = JSON.parse(localStorage.getItem('cashS'))
-      var cprice = JSON.parse(localStorage.getItem('cpriceS'))
-      var mgive = JSON.parse(localStorage.getItem('mgiveS'))
-      var multi = JSON.parse(localStorage.getItem('multiS'))
-      var mprice = JSON.parse(localStorage.getItem('mpriceS'))
-      var rgive = JSON.parse(localStorage.getItem('rgiveS'))
-      var reb = JSON.parse(localStorage.getItem('rebS'))
-      var rprice = JSON.parse(localStorage.getItem('rpriceS'))
-      var pgive = JSON.parse(localStorage.getItem('pgiveS'))
-      var pres = JSON.parse(localStorage.getItem('presS'))
-      var pprice = JSON.parse(localStorage.getItem('ppriceS'))
-      var agive = JSON.parse(localStorage.getItem('agiveS'))
-      var asc = JSON.parse(localStorage.getItem('ascS'))
-      var aprice = JSON.parse(localStorage.getItem('apriceS'))
-      var sgive = JSON.parse(localStorage.getItem('sgiveS'))
-      var sup = JSON.parse(localStorage.getItem('supS'))
-      var sprice = JSON.parse(localStorage.getItem('spriceS'))
-      var tgive = JSON.parse(localStorage.getItem('tgiveS'))
-      var tran = JSON.parse(localStorage.getItem('tranS'))
-      var tprice = JSON.parse(localStorage.getItem('tpriceS'))
-      var egive = JSON.parse(localStorage.getItem('egiveS'))
-      var eter = JSON.parse(localStorage.getItem('eterS'))
+      var cash = new Decimal(JSON.parse(localStorage.getItem('cashS')))
+      var cprice = new Decimal(JSON.parse(localStorage.getItem('cpriceS')))
+      var mgive = new Decimal(JSON.parse(localStorage.getItem('mgiveS')))
+      var multi = new Decimal(JSON.parse(localStorage.getItem('multiS')))
+      var mprice = new Decimal(JSON.parse(localStorage.getItem('mpriceS')))
+      var rgive = new Decimal(JSON.parse(localStorage.getItem('rgiveS')))
+      var reb = new Decimal(JSON.parse(localStorage.getItem('rebS')))
+      var rprice = new Decimal(JSON.parse(localStorage.getItem('rpriceS')))
+      var pgive = new Decimal(JSON.parse(localStorage.getItem('pgiveS')))
+      var pres = new Decimal(JSON.parse(localStorage.getItem('presS')))
+      var pprice = new Decimal(JSON.parse(localStorage.getItem('ppriceS')))
+      var agive = new Decimal(JSON.parse(localStorage.getItem('agiveS')))
+      var asc = new Decimal(JSON.parse(localStorage.getItem('ascS')))
+      var aprice = new Decimal(JSON.parse(localStorage.getItem('apriceS')))
+      var sgive = new Decimal(JSON.parse(localStorage.getItem('sgiveS')))
+      var sup = new Decimal(JSON.parse(localStorage.getItem('supS')))
+      var sprice = new Decimal(JSON.parse(localStorage.getItem('spriceS')))
+      var tgive = new Decimal(JSON.parse(localStorage.getItem('tgiveS')))
+      var tran = new Decimal(JSON.parse(localStorage.getItem('tranS')))
+      var tprice = new Decimal(JSON.parse(localStorage.getItem('tpriceS')))
+      var egive = new Decimal(JSON.parse(localStorage.getItem('egiveS')))
+      var eter = new Decimal(JSON.parse(localStorage.getItem('eterS')))
     }
 
-    if (JSON.parse(localStorage.getItem('tokensS')) == "null" || JSON.parse(localStorage.getItem('tranS')) == "null" || JSON.parse(localStorage.getItem('tranS')) == 0 || JSON.parse(localStorage.getItem('eterS')) == "null" || JSON.parse(localStorage.getItem('eterS')) == 0 || eter == 0 || tran == 0) {
-      var tokens = 0
-      var tokensSec = 0
-      var runeTimeout = 1
-      var runesOpened = 0
-      var common = 0
-      var rare = 0
-      var epic = 0
-      var legendary = 0
-      var ultimate = 0
-      var insane = 0
+    if (common == null || JSON.parse(localStorage.getItem('tokensS')) == "null" || JSON.parse(localStorage.getItem('tranS')) == "null" || JSON.parse(localStorage.getItem('tranS')) == 0 || JSON.parse(localStorage.getItem('eterS')) == "null" || JSON.parse(localStorage.getItem('eterS')) == 0 || eter == 0 || tran == 0) {
+      tokens = 0
+      tokensSec = 0
+      runeTimeout = 1
+      runesOpened = 0
+      common = 0
+      rare = 0
+      epic = 0
+      legendary = 0
+      ultimate = 0
+      insane = 0
       var omega = 0
-      var rtoggle1 = false
-      var rtoggle2 = false
-      var rtoggle3 = false
-      var rtoggle4 = false
-      var sprice = 3500
-      var tgive = 1
-      var tran = 1
-      var tprice = 5000
-      var egive = 1
-      var eter = 1
+      rtoggle1 = false
+      rtoggle2 = false
+      rtoggle3 = false
+      rtoggle4 = false
+      var sprice = new Decimal(3000)
+      var tgive = new Decimal(1)
+      var tran = new Decimal(1)
+      var tprice = new Decimal(4500)
+      var egive = new Decimal(1)
+      var eter = new Decimal(1)
     }
   </script>
-
 <body>
-  <h1 class="text" style="font-size: 15px; text-align: auto" id="upd">NEGATIVE STAT BUG (View Desc On How To Fix)</h1>
-  <button id="updButton" onclick="document.getElementById('upd').style.marginLeft = '-2500px'; document.getElementById('updButton').style.marginLeft = '-2500px'; document.getElementById('upd').style.height = '0px'; document.getElementById('updButton').style.height = '0px'" class="tabs" style="margin-left: 50vw; height: 25px; width: 50px; font-size: 20px; outline: 3px solid dimgray">Ok</button>
 
   <div style="display: flex; justify-content: space-around; margin: 10px;">
     <div id="sacrificetab" class="stat" style="background-color: white; height: 0px; width: 0px; opacity: 0; margin: 10px">
@@ -428,7 +385,7 @@
 
     <div>
       <br>
-      <button id="multi" class="button" style="background-color: red; outline: 5px solid darkred; color: darkred;" onmousedown="stat(1)" onmouseup="stat(0)">Multi<br>50 Cash<br>1 Multi</button>
+      <button id="multi" class="button" style="background-color: red; outline: 5px solid darkred; color: darkred;" onmousedown="stat(1)" onmouseup="stat(0)">Button Simulator Level<br>Click To Play</button>
       <br>
       <br>
       <button id="reb" class="button" style="background-color: blue; outline: 5px solid darkblue; color: darkblue;" onclick="stat(2)">Rebirth<br>1k Multi<br>1 Rebirth</button>
@@ -487,238 +444,225 @@
 
   <script>
   // Main Script
-  var down = false
 
-    function abbr(value) {
-      var newValue = value;
-      if (value < 10000000000000000000) {
-        if (value >= 1000) {
-          var suffixes = ["", "k", "m", "b","t","q","Q"];
-          var suffixNum = Math.floor( (""+value).length/3 );
-          var shortValue = '';
-          for (var precision = 2; precision >= 1; precision--) {
-            shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
-            var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
-            if (dotLessShortValue.length <= 2) { break; }
-          }
-          if (shortValue % 1 != 0)  shortValue = shortValue.toFixed(1);
-          newValue = shortValue+suffixes[suffixNum];
+  function abbr(value) {
+    var newValue = new Decimal(value);
+    newValue = newValue.round();
+
+    if (newValue.lte(1e+20)) {
+      if (newValue.gte(1000)) {
+        var suffixes = ["", "k", "m", "b", "t", "q", "Q"];
+        var suffixNum = Decimal.floor(newValue.log10().dividedBy(3));
+        var shortValue = '';
+
+        for (var precision = 2; precision >= 1; precision--) {
+          shortValue = parseFloat((suffixNum !== 0 ? (newValue.dividedBy(Decimal.pow(1000, suffixNum))).toNumber() : newValue.toPrecision(precision)));
+          var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g, '');
+          if (dotLessShortValue.length <= 2) { break; }
         }
-        return newValue;
-      } else {
-        return value.toPrecision(2);
+
+        if (shortValue % 1 !== 0) shortValue = shortValue.toFixed(1);
+        newValue = shortValue + suffixes[suffixNum];
       }
+      return newValue.toString();
+    } else {
+      var ValueS = newValue.toPrecision(3).toString()
+      return ValueS.substr(0, ValueS.indexOf('e')) + "e" + newValue.e.toString()
     }
+  }
 
     function stat(stat) {
-
       if (stat == 0) {
         down = false
       }
 
       if (stat == 1) {
-        if (cash >= cprice) {
+        if (cash.gte(cprice)) {
           down = true
         }
       }
 
       if (stat == 2) {
-        if (multi >= mprice) {
-          multi = 1
-          cash = 1
-          cprice = 50
-          mgive = 1
-          multi = 1
-          reb += rgive * pres * (sac * 0.2 + 1) * ((epic / 100) + (legendary / 20) + (ultimate / 4) + (insane * 2.5) + 1)
+        if (multi.gte(mprice)) {
+          multi = new Decimal(1)
+          cash = new Decimal(1)
+          cprice = new Decimal(50)
+          mgive = new Decimal(1)
+          multi = new Decimal(1)
+          reb = reb.plus(rgive.times(pres).times(sac * 0.2 + 1).times((epic / 100) + (legendary / 20) + (ultimate / 4) + (insane * 2.5) + 1));
         }
       }
 
       if (stat == 3) {
-        if (reb >= rprice) {
-          cash = 1
-          cprice = 50
-          mgive = 1
-          multi = 1
-          mprice = 1000
-          rgive = 1
-          reb = 1
-          pres += pgive * asc * (sac * 0.15 + 1) * ((ultimate / 10) + insane + 1)
+        if (reb.gte(rprice)) {
+          cash = new Decimal(1)
+          cprice = new Decimal(50)
+          mgive = new Decimal(1)
+          multi = new Decimal(1)
+          mprice = new Decimal(1000)
+          rgive = new Decimal(1)
+          reb = new Decimal(1)
+          pres = pres.plus(pgive.times(asc).times(sac * 0.15 + 1).times((ultimate / 10) + insane + 1));
         }
       }
 
       if (stat == 4) {
-        if (pres >= pprice) {
-          cash = 1
-          cprice = 50
-          mgive = 1
-          multi = 1
-          mprice = 1000
-          rgive = 1
-          reb = 1
-          pgive = 1
-          rprice = 1500
-          pres = 1
-          asc += agive * sup * (sac * 0.1 + 1) * (insane / 2 + 1)
+        if (pres.gte(pprice)) {
+          cash = new Decimal(1)
+          cprice = new Decimal(50)
+          mgive = new Decimal(1)
+          multi = new Decimal(1)
+          mprice = new Decimal(1000)
+          rgive = new Decimal(1)
+          reb = new Decimal(1)
+          pgive = new Decimal(1)
+          rprice = new Decimal(1500)
+          pres = new Decimal(1)
+          asc = asc.plus(agive.times(sup).times(sac * 0.1 + 1).times(insane / 2 + 1));
         }
       }
 
       if (stat == 5) {
-        if (asc >= aprice) {
-          cash = 1
-          cprice = 50
-          mgive = 1
-          multi = 1
-          mprice = 1000
-          rgive = 1
-          reb = 1
-          pgive = 1
-          rprice = 1500
-          pres = 1
-          agive = 1
-          pprice = 2000
-          asc = 1
-          sup += sgive * tran
+        if (asc.gte(aprice)) {
+          cash = new Decimal(1)
+          cprice = new Decimal(50)
+          mgive = new Decimal(1)
+          multi = new Decimal(1)
+          mprice = new Decimal(1000)
+          rgive = new Decimal(1)
+          reb = new Decimal(1)
+          pgive = new Decimal(1)
+          rprice = new Decimal(1500)
+          pres = new Decimal(1)
+          agive = new Decimal(1)
+          pprice = new Decimal(2000)
+          asc = new Decimal(1)
+          sup = sup.plus(sgive.times(tran))
         }
       }
 
       if (stat == 6) {
-        if (sup >= sprice) {
-          cash = 1
-          cprice = 50
-          mgive = 1
-          multi = 1
-          mprice = 1000
-          rgive = 1
-          reb = 1
-          pgive = 1
-          rprice = 1500
-          pres = 1
-          agive = 1
-          pprice = 2000
-          asc = 1
-          aprice = 2500
-          sgive = 1
-          sup = 1
-          tran += tgive * eter
+        if (sup.gte(sprice)) {
+          cash = new Decimal(1)
+          cprice = new Decimal(50)
+          mgive = new Decimal(1)
+          multi = new Decimal(1)
+          mprice = new Decimal(1000)
+          rgive = new Decimal(1)
+          reb = new Decimal(1)
+          pgive = new Decimal(1)
+          rprice = new Decimal(1500)
+          pres = new Decimal(1)
+          agive = new Decimal(1)
+          pprice = new Decimal(2000)
+          asc = new Decimal(1)
+          aprice = new Decimal(2500)
+          sgive = new Decimal(1)
+          sup = new Decimal(1)
+          tran = tran.plus(tgive.times(eter))
         }
       }
 
       if (stat == 7) {
-        if (tran >= tprice) {
-          cash = 1
-          cprice = 50
-          mgive = 1
-          multi = 1
-          mprice = 1000
-          rgive = 1
-          reb = 1
-          pgive = 1
-          rprice = 1500
-          pres = 1
-          agive = 1
-          pprice = 2000
-          asc = 1
-          aprice = 2500
-          sgive = 1
-          sup = 1
-          sprice = 3500
-          tgive = 1
-          tran = 1
-          eter += egive
+        if (tran.gte(tprice)) {
+          cash = new Decimal(1)
+          cprice = new Decimal(50)
+          mgive = new Decimal(1)
+          multi = new Decimal(1)
+          mprice = new Decimal(1000)
+          rgive = new Decimal(1)
+          reb = new Decimal(1)
+          pgive = new Decimal(1)
+          rprice = new Decimal(1500)
+          pres = new Decimal(1)
+          agive = new Decimal(1)
+          pprice = new Decimal(2000)
+          asc = new Decimal(1)
+          aprice = new Decimal(2500)
+          sgive = new Decimal(1)
+          sup = new Decimal(1)
+          sprice = new Decimal(3500)
+          tgive = new Decimal(1)
+          tran = new Decimal(1)
+          eter = eter.plus(egive)
         }
       }
     }
 
     function statLoop(stat) {
       if (stat == 1) {
-        if (cash >= cprice * 1.65 && cash < 1000000000) {
-          cprice *= 1.65
-          mgive *= 1.3
+        if (cash.gte(cprice.times(2.24))) {
+          cprice = cprice.times(2.25)
+          mgive = mgive.times(1.65)
         }
-        if (cash >= cprice * 1.65 && cash >= 1000000000) {
-          cprice *= 1.7
-          mgive *= 1.3
-        }
-        if (cash < cprice * 1.65 && cprice >= 100 && cash < 1000000000) {
-          cprice /= 1.65
-          mgive /= 1.3
-        }
-        if (cash < cprice * 1.65 && cprice >= 100 && cash >= 1000000000) {
-          cprice /= 1.7
-          mgive /= 1.3
+        if (cash.lt(cprice.times(2.24)) && cprice.gte(50 * 2.24)) {
+          cprice = cprice.dividedBy(2.25)
+          mgive = mgive.dividedBy(1.65)
         }
       }
       if (stat == 2) {
-        if (multi >= mprice * 1.6 && multi < 1000000) {
-          mprice *= 1.6
-          rgive *= 1.3
+        if (multi.gte(mprice.times(1.76))) {
+          mprice = mprice.times(1.75)
+          rgive = rgive.times(1.25)
         }
-        if (multi >= mprice * 1.6 && multi >= 1000000) {
-          mprice *= 1.65
-          rgive *= 1.3
-        }
-        if (multi < mprice * 1.6 && mprice >= 1000 * 1.6 && multi < 1000000) {
-          mprice /= 1.6
-          rgive /= 1.3
-        }
-        if (multi < mprice * 1.6 && mprice >= 1000 * 1.6 && multi >= 1000000) {
-          mprice /= 1.65
-          rgive /= 1.3
+        if (multi.lt(mprice.times(1.76)) && mprice.gte(250 * 1.74)) {
+          mprice = mprice.divideBy(1.75)
+          rgive = rgive.dividedBy(1.25)
         }
       }
 
       if (stat == 3) {
-        if (reb >= rprice * 1.6) {
-          rprice *= 1.55
-          pgive *= 1.35
+       if (reb.gte(rprice.times(1.76))) {
+          rprice = rprice.times(1.75)
+          pgive = pgive.times(1.3)
         }
-        if (reb < rprice * 1.6 && rprice >= 1500 * 1.6) {
-          rprice /= 1.55
-          pgive /= 1.35
+        if (reb.lt(rprice.times(1.76)) && rprice.gte(1000 * 1.74)) {
+          rprice = rprice.divideBy(1.75)
+          pgive = pgive.dividedBy(1.3)
         }
       }
 
       if (stat == 4) {
-        if (pres >= pprice * 1.5) {
-          pprice *= 1.5
-          agive *= 1.35
+        if (pres.gte(pprice.times(1.76))) {
+          pprice = pprice.times(1.75)
+          agive = agive.times(1.3)
         }
-        if (pres < pprice * 1.5 && pprice >= 2000 * 1.6) {
-          pprice /= 1.45
-          agive /= 1.35
+        if (pres.lt(pprice.times(1.76)) && pprice.gte(1500 * 1.74)) {
+          pprice = pprice.divideBy(1.75)
+          agive = agive.dividedBy(1.3)
         }
       }
 
       if (stat == 5) {
-        if (asc >= aprice * 1.5) {
-          aprice *= 1.5
-          sgive *= 1.35
+        if (asc.gte(aprice.times(1.76))) {
+          aprice = aprice.times(1.75)
+          sgive = sgive.times(1.35)
         }
-        if (asc < aprice * 1.5 && aprice >= 2500 * 1.6) {
-          aprice /= 1.5
-          sgive /= 1.35
+        if (asc.lt(aprice.times(1.76)) && aprice.gte(2000 * 1.74)) {
+          aprice = aprice.divideBy(1.75)
+          sgive = sgive.dividedBy(1.35)
         }
       }
 
       if (stat == 6) {
-        if (sup >= sprice * 1.5) {
-          sprice *= 1.5
-          tgive *= 1.35
+        if (sup.gte(sprice.times(1.76))) {
+          sprice = sprice.times(1.75)
+          tgive = tgive.times(1.35)
         }
-        if (sup < sprice * 1.5 && sprice >= 3500 * 1.6) {
-          sprice /= 1.5
-          tgive /= 1.35
+        if (sup.lt(sprice.times(1.76)) && sprice.gte(3000 * 1.74)) {
+          sprice = sprice.divideBy(1.75)
+          tgive = tgive.dividedBy(1.35)
         }
       }
 
       if (stat == 7) {
-        if (tran >= tprice * 1.5) {
-          tprice *= 1.5
-          egive *= 1.35
+        if (tran.gte(tprice.times(1.76))) {
+          tprice = tprice.times(1.75)
+          egive = egive.times(1.4)
         }
-        if (tran < tprice * 1.5 && tprice >= 5000 * 1.6) {
-          tprice /= 1.5
-          egive /= 1.35
+        if (tran.lt(tprice.times(1.76)) && tprice.gte(4500 * 1.74)) {
+          tprice = tprice.divideBy(1.75)
+          egive = egive.dividedBy(1.4)
         }
       }
     }
@@ -755,6 +699,7 @@
           aprice = 2500
           sgive = 1
           sup = 1
+
           document.getElementById("sacrificetab").style.opacity = 0
           document.getElementById("sacrificetab").style.width = "0px"
           document.getElementById("sacrificetab").style.height = "0px"
@@ -784,74 +729,74 @@
     }
 
     function gameLoop() {
-      if (cash >= cprice) {
+      if (cash.gte(cprice)) {
         document.getElementById("multi").style.filter = "brightness(130%)"
       } else {
         document.getElementById("multi").style.filter = "brightness(85%)"
       }
 
-      if (multi >= mprice) {
+      if (multi.gte(mprice)) {
         document.getElementById("reb").style.filter = "brightness(130%)"
       } else {
         document.getElementById("reb").style.filter = "brightness(85%)"
       }
 
-      if (reb >= rprice) {
+      if (reb.gte(rprice)) {
         document.getElementById("pres").style.filter = "brightness(130%)"
       } else {
         document.getElementById("pres").style.filter = "brightness(85%)"
       }
 
-      if (pres >= pprice) {
+      if (pres.gte(pprice)) {
         document.getElementById("asc").style.filter = "brightness(130%)"
       } else {
         document.getElementById("asc").style.filter = "brightness(85%)"
       }
 
-      if (asc >= aprice) {
+      if (asc.gte(aprice)) {
         document.getElementById("sup").style.filter = "brightness(130%)"
       } else {
         document.getElementById("sup").style.filter = "brightness(85%)"
       }
 
-      if (sup >= sprice) {
+      if (sup.gte(sprice)) {
         document.getElementById("tran").style.filter = "brightness(130%)"
       } else {
         document.getElementById("tran").style.filter = "brightness(85%)"
       }
 
-      if (tran >= tprice) {
+      if (tran.gte(tprice)) {
         document.getElementById("eter").style.filter = "brightness(130%)"
       } else {
         document.getElementById("eter").style.filter = "brightness(85%)"
       }
 
       if (down === true) {
-        if (cash >= cprice) {
-          cash -= cprice
-          multi += mgive * reb * (sac * 0.5 + 1) * ((common / 200) + (rare / 100) + (epic / 40) + (legendary / 20) + (ultimate / 4) + (insane * 5) + 1)
+        if (cash.gte(cprice)) {
+          cash = cash.sub(cprice)
+          multi = multi.plus(mgive.times(reb).times(sac * 0.5 + 1).times((common / 200) + (rare / 100) + (epic / 40) + (legendary / 20) + (ultimate / 4) + (insane * 5) + 1))
           document.getElementById("multi").style.filter = "brightness(130%)"
         }
       }
 
-      cash += multi * (sac + 1) * 10 * ((common / 40) + (rare / 20) + (epic / 10) + (legendary / 4) + ultimate + (insane * 7.5) + 1)
+      cash = cash.plus(multi.times(sac + 1).times(10).times((common / 40) + (rare / 20) + (epic / 10) + (legendary / 4) + ultimate + (insane * 7.5) + 1))
 
-      document.getElementById("multi").innerHTML = "Multi<br>" + abbr(Math.round(cprice)) + " Cash<br>" + abbr(Math.round(mgive * reb * (sac * 0.5 + 1))) + " Multi"
-      document.getElementById("reb").innerHTML = "Rebirth<br>" + abbr(Math.round(mprice)) + " Multi<br>" + abbr(Math.round(rgive * pres * (sac * 0.2 + 1))) + " Rebirth"
-      document.getElementById("pres").innerHTML = "Prestige<br>" + abbr(Math.round(rprice)) + " Rebirth<br>" + abbr(Math.round(pgive * asc * (sac * 0.15 + 1))) + " Prestige"
-      document.getElementById("asc").innerHTML = "Ascension<br>" + abbr(Math.round(pprice)) + " Prestige<br>" + abbr(Math.round(agive * sup * (sac * 0.1 + 1))) + " Ascension"
-      document.getElementById("sup").innerHTML = "Supreme<br>" + abbr(Math.round(aprice)) + " Ascension<br>" + abbr(Math.round(sgive * tran)) + " Supreme"
-      document.getElementById("tran").innerHTML = "Tranquil<br>" + abbr(Math.round(sprice)) + " Supreme<br>" + abbr(Math.round(tgive * eter)) + " Tranquil"
-      document.getElementById("eter").innerHTML = "Eternity<br>" + abbr(Math.round(tprice)) + " Tranquil<br>" + abbr(Math.round(egive)) + " Eternity"
+      document.getElementById("multi").innerHTML = "Multi<br>" + abbr(cprice) + " Cash<br>" + abbr(mgive.times(reb).times(sac * 0.5 + 1).times((common / 200) + (rare / 100) + (epic / 40) + (legendary / 20) + (ultimate / 4) + (insane * 5) + 1)) + " Multi"
+      document.getElementById("reb").innerHTML = "Rebirth<br>" + abbr(mprice) + " Multi<br>" + abbr(rgive.times(pres).times(sac * 0.2 + 1).times((epic / 100) + (legendary / 20) + (ultimate / 4) + (insane * 2.5) + 1)) + " Rebirth"
+      document.getElementById("pres").innerHTML = "Prestige<br>" + abbr(rprice) + " Rebirth<br>" + abbr(pgive.times(asc).times(sac * 0.15 + 1).times((ultimate / 10) + insane + 1)) + " Prestige"
+      document.getElementById("asc").innerHTML = "Ascension<br>" + abbr(pprice) + " Prestige<br>" + abbr(agive.times(sup).times(sac * 0.1 + 1).times(insane / 2 + 1)) + " Ascension"
+      document.getElementById("sup").innerHTML = "Supreme<br>" + abbr(aprice) + " Ascension<br>" + abbr(sgive.times(tran)) + " Supreme"
+      document.getElementById("tran").innerHTML = "Tranquil<br>" + abbr(sprice) + " Supreme<br>" + abbr(tgive.times(eter)) + " Tranquil"
+      document.getElementById("eter").innerHTML = "Eternity<br>" + abbr(tprice) + " Tranquil<br>" + abbr(egive) + " Eternity"
 
-      document.getElementById("cashstat").innerHTML = "Cash: " + abbr(Math.round(cash))
-      document.getElementById("multistat").innerHTML = "Multi: " + abbr(Math.round(multi))
-      document.getElementById("rebstat").innerHTML = "Rebirth: " + abbr(Math.round(reb - 1))
-      document.getElementById("presstat").innerHTML = "Prestige: " + abbr(Math.round(pres - 1))
-      document.getElementById("ascstat").innerHTML = "Ascension: " + abbr(Math.round(asc - 1))
-      document.getElementById("supstat").innerHTML = "Supreme: " + abbr(Math.round(sup - 1))
-      document.getElementById("transtat").innerHTML = "Tranquil: " + abbr(Math.round(tran - 1))
-      document.getElementById("eterstat").innerHTML = "Eternity: " + abbr(Math.round(eter - 1))
+      document.getElementById("cashstat").innerHTML = "Cash: " + abbr(cash)
+      document.getElementById("multistat").innerHTML = "Multi: " + abbr(multi)
+      document.getElementById("rebstat").innerHTML = "Rebirth: " + abbr(reb.sub(1))
+      document.getElementById("presstat").innerHTML = "Prestige: " + abbr(pres.sub(1))
+      document.getElementById("ascstat").innerHTML = "Ascension: " + abbr(asc.sub(1))
+      document.getElementById("supstat").innerHTML = "Supreme: " + abbr(sup.sub(1))
+      document.getElementById("transtat").innerHTML = "Tranquil: " + abbr(tran.sub(1))
+      document.getElementById("eterstat").innerHTML = "Eternity: " + abbr(eter.sub(1))
 
       if (swait === false) {
         document.getElementById("sactag").innerHTML = "You Need: " + abbr(saccost) + " Ascension"
@@ -870,8 +815,66 @@
       statLoop(5)
       statLoop(6)
       statLoop(7)
+
+      statLoop(1)
+      statLoop(2)
+      statLoop(3)
+      statLoop(4)
+      statLoop(5)
+      statLoop(6)
+      statLoop(7)
+
+      statLoop(1)
+      statLoop(2)
+      statLoop(3)
+      statLoop(4)
+      statLoop(5)
+      statLoop(6)
+      statLoop(7)
+
+      statLoop(1)
+      statLoop(2)
+      statLoop(3)
+      statLoop(4)
+      statLoop(5)
+      statLoop(6)
+      statLoop(7)
+
+      statLoop(1)
+      statLoop(2)
+      statLoop(3)
+      statLoop(4)
+      statLoop(5)
+      statLoop(6)
+      statLoop(7)
+
+      statLoop(1)
+      statLoop(2)
+      statLoop(3)
+      statLoop(4)
+      statLoop(5)
+      statLoop(6)
+      statLoop(7)
+
+      statLoop(1)
+      statLoop(2)
+      statLoop(3)
+      statLoop(4)
+      statLoop(5)
+      statLoop(6)
+      statLoop(7)
+
+      statLoop(1)
+      statLoop(2)
+      statLoop(3)
+      statLoop(4)
+      statLoop(5)
+      statLoop(6)
+      statLoop(7)
+
+      setTimeout(LoopStats, 1)
     }
-    setInterval(LoopStats, 10)
+    LoopStats()
   </script>
 
   <script>
@@ -1049,36 +1052,32 @@
           ultimate = 0
           insane = 0
           omega = 0
-          rtoggle1 = false
-          rtoggle2 = false
-          rtoggle3 = false
-          rtoggle4 = false
           sac = 0
           sacgive = 0
           saccost = 10000
           swait = false
-          cash = 1
-          cprice = 50
-          mgive = 1
-          multi = 1
-          mprice = 1000
-          rgive = 1
-          reb = 1
-          rprice = 1500
-          pgive = 1
-          pres = 1
-          pprice = 2000
-          agive = 1
-          asc = 1
-          aprice = 2500
-          sgive = 1
-          sup = 1
-          sprice = 3500
-          tgive = 1
-          tran = 1
-          tprice = 5000
-          egive = 1
-          eter = 1
+          cash = new Decimal(1)
+          cprice = new Decimal(50)
+          mgive = new Decimal(1)
+          multi = new Decimal(1)
+          mprice = new Decimal(250)
+          rgive = new Decimal(1)
+          reb = new Decimal(1)
+          rprice = new Decimal(1000)
+          pgive = new Decimal(1)
+          pres = new Decimal(1)
+          pprice = new Decimal(1500)
+          agive = new Decimal(1)
+          asc = new Decimal(1)
+          aprice = new Decimal(2000)
+          sgive = new Decimal(1)
+          sup = new Decimal(1)
+          sprice = new Decimal(3000)
+          tgive = new Decimal(1)
+          tran = new Decimal(1)
+          tprice = new Decimal(4500)
+          egive = new Decimal(1)
+          eter = new Decimal(1)
           document.getElementById("notifierS").innerHTML = "All Data Erased"
         }
       }
@@ -1173,6 +1172,7 @@
         localStorage.setItem('tpriceS', JSON.stringify(tprice))
         localStorage.setItem('egiveS', JSON.stringify(egive))
         localStorage.setItem('eterS', JSON.stringify(eter))
+
       Sloops += 1
       document.getElementById("notifierS").innerHTML = "Saved (" + Sloops + ")"
     }
@@ -1284,10 +1284,11 @@
   var runeGotten = ""
 
   function RuneLoop() {
-    tokensSec = (asc / 2.5) - (1 / 2.5)
+    tokensSec = asc.dividedBy(2.5).minus(1).dividedBy(2.5).toNumber();
     tokens += (tokensSec / runeTimeout) / 60
+
     document.getElementById("Tokens").innerHTML = "You Have " + abbr(Math.round(tokens)) + " Tokens"
-    document.getElementById("TokensSec").innerHTML = "You Get " + Math.round(tokensSec * 10) / 10 + " Tokens/Min"
+    document.getElementById("TokensSec").innerHTML = "You Get " + abbr(Math.round(tokensSec * 10)) / 10 + " Tokens/Min"
     document.getElementById("RunesOpened").innerHTML = "You Have Opened " + abbr(Math.round(runesOpened)) + " Runes"
 
     document.getElementById("CommonStat").innerHTML = "You Have " + common + " Common Runes"
@@ -1297,10 +1298,10 @@
     document.getElementById("UltimateStat").innerHTML = "You Have " + ultimate + " Ultimate Runes"
     document.getElementById("InsaneStat").innerHTML = "You Have " + insane + " Insane Runes"
 
-    if (rtoggle1 === true && tokens >= 1 && asc >= 1) {
-      asc -= 0.1
+    if (rtoggle1 === true && tokens >= 1 && asc.gte(0.1)) {
+      asc = asc.sub(0.1)
       rune(1)
-      tokens -= 1
+      tokens = tokens.sub(1)
       document.getElementById("notifierR").innerHTML = "You Got A " + runeGotten + " Rune"
       if (runeR == 1) {
         runeGotten = "Common"
@@ -1317,8 +1318,8 @@
     } else {
       document.getElementById("rune1").style.filter = "brightness(100%)"
     }
-    if (rtoggle2 === true && tokens >= 10 && asc >= 1) {
-      asc -= 1
+    if (rtoggle2 === true && tokens >= 10 && asc.gte(1)) {
+      asc = asc.sub(1)
       rune(2)
       tokens -= 10
       document.getElementById("notifierR").innerHTML = "You Got A " + runeGotten + " Rune"
@@ -1337,8 +1338,8 @@
     } else {
       document.getElementById("rune2").style.filter = "brightness(100%)"
     }
-    if (rtoggle3 === true && tokens >= 100 && asc >= 10) {
-      asc -= 10
+    if (rtoggle3 === true && tokens >= 100 && asc.gte(10)) {
+      asc = asc.sub(10)
       rune(3)
       tokens -= 100
       document.getElementById("notifierR").innerHTML = "You Got A " + runeGotten + " Rune"
@@ -1357,8 +1358,8 @@
     } else {
       document.getElementById("rune3").style.filter = "brightness(100%)"
     }
-    if (rtoggle4 === true && tokens >= 1000 && asc >= 100) {
-      asc -= 100
+    if (rtoggle4 === true && tokens >= 1000 && asc.gte(100)) {
+      asc = asc.sub(1)
       rune(4)
       tokens -= 1000
       document.getElementById("notifierR").innerHTML = "You Got A " + runeGotten + " Rune"
