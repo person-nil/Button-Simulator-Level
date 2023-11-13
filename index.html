@@ -602,20 +602,20 @@
       if (stat == 1) {
         if (cash.gte(cprice.times(2.24))) {
           cprice = cprice.times(2.25)
-          mgive = mgive.times(1.6)
+          mgive = mgive.times(1.65)
         }
         if (cash.lt(cprice.times(2.24)) && cprice.gte(50 * 2.24)) {
           cprice = cprice.dividedBy(2.25)
-          mgive = mgive.dividedBy(1.6)
+          mgive = mgive.dividedBy(1.65)
         }
       }
       if (stat == 2) {
-        if (multi.gte(mprice.times(1.76))) {
-          mprice = mprice.times(1.75)
+        if (multi.gte(mprice.times(1.71))) {
+          mprice = mprice.times(1.7)
           rgive = rgive.times(1.2)
         }
-        if (multi.lt(mprice.times(1.76)) && mprice.gte(250 * 1.74)) {
-          mprice = mprice.divideBy(1.75)
+        if (multi.lt(mprice.times(1.71)) && mprice.gte(250 * 1.74)) {
+          mprice = mprice.divideBy(1.7)
           rgive = rgive.dividedBy(1.2)
         }
       }
