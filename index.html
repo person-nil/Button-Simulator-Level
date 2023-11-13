@@ -471,22 +471,23 @@
     }
   }
 
+
     function stat(stat) {
       if (stat == 0) {
         down = false
       }
 
-      if (stat == 1) {
-        if (cash.gte(cprice)) {
-          down = true
-        }
-      }
-      
       if (stat == 0.5) {
         if (cash.gte(cprice)) {
           cash = cash.sub(cprice)
           multi = multi.plus(mgive.times(reb).times(sac * 0.5 + 1).times((common / 200) + (rare / 100) + (epic / 40) + (legendary / 20) + (ultimate / 4) + (insane * 5) + 1))
           document.getElementById("multi").style.filter = "brightness(130%)"
+        }
+      }
+
+      if (stat == 1) {
+        if (cash.gte(cprice)) {
+          down = true
         }
       }
 
@@ -601,76 +602,76 @@
       if (stat == 1) {
         if (cash.gte(cprice.times(2.24))) {
           cprice = cprice.times(2.25)
-          mgive = mgive.times(1.65)
+          mgive = mgive.times(1.6)
         }
         if (cash.lt(cprice.times(2.24)) && cprice.gte(50 * 2.24)) {
           cprice = cprice.dividedBy(2.25)
-          mgive = mgive.dividedBy(1.65)
+          mgive = mgive.dividedBy(1.6)
         }
       }
       if (stat == 2) {
         if (multi.gte(mprice.times(1.76))) {
           mprice = mprice.times(1.75)
-          rgive = rgive.times(1.25)
+          rgive = rgive.times(1.2)
         }
         if (multi.lt(mprice.times(1.76)) && mprice.gte(250 * 1.74)) {
           mprice = mprice.divideBy(1.75)
-          rgive = rgive.dividedBy(1.25)
+          rgive = rgive.dividedBy(1.2)
         }
       }
 
       if (stat == 3) {
        if (reb.gte(rprice.times(1.76))) {
           rprice = rprice.times(1.75)
-          pgive = pgive.times(1.3)
+          pgive = pgive.times(1.25)
         }
         if (reb.lt(rprice.times(1.76)) && rprice.gte(1000 * 1.74)) {
           rprice = rprice.divideBy(1.75)
-          pgive = pgive.dividedBy(1.3)
+          pgive = pgive.dividedBy(1.25)
         }
       }
 
       if (stat == 4) {
         if (pres.gte(pprice.times(1.76))) {
           pprice = pprice.times(1.75)
-          agive = agive.times(1.3)
+          agive = agive.times(1.25)
         }
         if (pres.lt(pprice.times(1.76)) && pprice.gte(1500 * 1.74)) {
           pprice = pprice.divideBy(1.75)
-          agive = agive.dividedBy(1.3)
+          agive = agive.dividedBy(1.25)
         }
       }
 
       if (stat == 5) {
         if (asc.gte(aprice.times(1.76))) {
           aprice = aprice.times(1.75)
-          sgive = sgive.times(1.35)
+          sgive = sgive.times(1.3)
         }
         if (asc.lt(aprice.times(1.76)) && aprice.gte(2000 * 1.74)) {
           aprice = aprice.divideBy(1.75)
-          sgive = sgive.dividedBy(1.35)
+          sgive = sgive.dividedBy(1.3)
         }
       }
 
       if (stat == 6) {
         if (sup.gte(sprice.times(1.76))) {
           sprice = sprice.times(1.75)
-          tgive = tgive.times(1.35)
+          tgive = tgive.times(1.3)
         }
         if (sup.lt(sprice.times(1.76)) && sprice.gte(3000 * 1.74)) {
           sprice = sprice.divideBy(1.75)
-          tgive = tgive.dividedBy(1.35)
+          tgive = tgive.dividedBy(1.3)
         }
       }
 
       if (stat == 7) {
         if (tran.gte(tprice.times(1.76))) {
           tprice = tprice.times(1.75)
-          egive = egive.times(1.4)
+          egive = egive.times(1.35)
         }
         if (tran.lt(tprice.times(1.76)) && tprice.gte(4500 * 1.74)) {
           tprice = tprice.divideBy(1.75)
-          egive = egive.dividedBy(1.4)
+          egive = egive.dividedBy(1.35)
         }
       }
     }
@@ -686,7 +687,7 @@
     }
 
     function yes() {
-      if (asc >= saccost) {
+      if (asc.gte(new Decimal(saccost))) {
         let sactext = "Are You Sure You Want To Sacrifice?\nSacrificing Will Reset All Stats Up To Supreme!"
         if (confirm(sactext) === true) {
           sac += sacgive
@@ -731,7 +732,7 @@
       document.getElementById("settingstab").style.opacity = 0
       document.getElementById("settingstab").style.height = "0px"
       document.getElementById("settingstab").style.width = "0px"
-      sacgive = Math.round(Math.pow(Math.log10(asc), 2) - 10)
+      sacgive = asc.log10().pow(2).sub(10).toNumber()
       document.getElementById("sacstat").innerHTML = "You Have: " + abbr(sac) + " Sacrifice Points"
       document.getElementById("sactag2").innerHTML = "+ " + abbr(sacgive) + " Sacrifice Points"
     }
@@ -813,6 +814,7 @@
 
     setInterval(gameLoop, 250)
   </script>
+
 
   <script>
     function LoopStats() {
