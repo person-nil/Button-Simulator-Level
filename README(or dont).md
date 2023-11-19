@@ -9,5 +9,3 @@ OR
 copy `index.html` and `break-eternity.js` (DO NOT CHANGE THE NAME OF THE FILES) use a html/javascipt editor to run the code
 
 Very simple and easy unlike most github stuff, for now at least
-
-Also by "for now" i mean like after 2 updates, when i have to divide the code up into smaller files, but who cares, everyone who's not a coding nerd (like me) will prob just go on GitHub Pages
